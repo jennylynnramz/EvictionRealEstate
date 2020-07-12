@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SF Evictions</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <!-- NAV BAR -->
+  <ul class="nav  nav-fill fixed-top navbar-light bg-light">
+    <li class="nav-item">
+      <a class="nav-link active" href="#return_to_top">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="#about_info">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#map_container"> Interactive Map</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#interactive_graphs">Evictions & Real Estate Graphs and Charts</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="realEstateSummary.html">Real Estate Data Table</a>
+    </li>
+  </ul> 
+
+  <!-- Jumbotron/Intro -->
+  <div id="return_to_top" class="jumbotron">
+    <img src="images/chris-lawton-tX6BrZCFYOQ-unsplash.jpg" class="img-fluid" alt="Responsive image">
+  </div>
+
+  <div class="container" id="about_info">
+    <h2  class="display-4">Looking at Evictions in San Francisco</h2>
+    <p class="lead">This group project took the dataset from Data SF to study the relationship between evictions and SF neighborhhods. Additionally, we took data from Redfin's website to look at the relationship, if any, in home prices.</p>
+    <hr class="my-4">
+    <!-- <p>This website will share with you our learnings and any relevant data visualizations.</p> -->
+    <p>Data sets used in this analysis:</p>
+    <ul>
+      <li><a href="https://data.sfgov.org/Housing-and-Buildings/Eviction-Notices/5cei-gny5">San Francisco Evictions</a></li>
+      <li><a href="https://www.redfin.com/">San Francisco Real Estate Prices Scraped from Redfin</a></li>
+    </ul>
+    
+    <p>Explorations: The team wanted to dive into the evictions data to see if there were any geogrpahical patterns...some of the questions explored were: </p>
+    <ul>
+      <li>Are there SF neighborhhods that have higher clusters of evictions?</li>
+      <li>What is the real estate "profile" of those neighborhhods? </li>
+      <li>What is the most common type of eviction?</li>
+      <li>Is there a relationship to the type of eviction with Neighborhood?</li>
+      
+    </ul>
+    <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Scroll Down</a> -->
+  </div>
+  
+
+  <!-- Container 1 -->
+  <div id="interactive_graphs" class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h3>SF Eviction Pie Chart</h3>
+        <p>Select a Neighborhood to see the distribution of eviction reasons for all the evictions in the neighborhood. Of note are the Lakeshore and Mission neighborhoods, with 180 and 107 evictions respectively in the last year. And Japantown and Seacliff are on the other end of the spectrum with 1 eviction each.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm well">
+        <h5>Neighborhood Name:</h5>
+          <select id="neighborhood-select" value="Mission" onchange="optionNeighborhoodChanged(this.value)"></select>
+      </div>
+      <div id="pie"></div>
+    </div>
+  </div>
+<hr>
+  <!-- Container 2 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h3>Bar chart of eviction reasons/rational by neighborhood.</h3>
+        <p>Select a reason for eviction and see how often it was claimed as part of the eviction filing by neighborhood.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm well">
+        <h5>Eviction Rational:</h5>
+        <select id="eviction-select" onchange="optionEvictionChanged(this.value)"></select>
+      <!-- </div> -->
+        <div id="bar"></div>
+      </div>
+      
+    </div>
+  </div>
+  <hr>
+  <!-- Containter Intro for MAP -->
+  <div id="map_container" class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h3>Interactive Map of Evictions in San Francisco</h3>
+        <p>Here you can play around with seeing the evictions as they are by neighborhood in San Francisco.</p>
+      </div>
+    </div>
+  </div>
+<!-- MAP Container -->
+  <div id="map" class="col-sm-12" ></div>
+    
+  
+
+  <!-- Container Template (do not code, just copy and paste to create a new section) -->
+  <!-- <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+    </div>
+  </div>
+   -->
+  <!-- FOOTER -->
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm">
+          <p>Put together with the brains of Cynthia, Humberto, Jennifer, and Stephanie in July of 2020. With the help of the UC Berkeley Extension Program.</p>
+        </div>
+      </div>
+      
+    </div>
+  </footer>
+  <!-- Scripts -->
+  
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+  <script type="text/javascript" src="config.js"></script>
+  <script type="text/javascript" src="logic2.js"></script>
+  
+  <script type="text/javascript" src="graphs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+  
+  
+</body>
+</html>

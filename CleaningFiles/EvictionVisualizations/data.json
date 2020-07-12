@@ -1,0 +1,172 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+    {
+    "type": "Feature",
+    "geometry": {
+    "type": "Point",
+    "coordinates": [
+    -122.3907928053894,
+    37.71076469004143
+    ]
+    },
+    "properties": {
+    "eviction_id": "M200682",
+    "good_samaritan_ends": false,
+    "roommate_same_unit": false,
+    ":@computed_region_fyvs_ahh9": "1",
+    "city": "San Francisco",
+    ":@computed_region_6qbp_sg9q": "79",
+    ":@computed_region_h4ep_8xdi": null,
+    ":@computed_region_p5aj_wyqh": "3",
+    ":@computed_region_pigm_ib2e": null,
+    "zip": "94134",
+    "lead_remediation": false,
+    "state": "CA",
+    "constraints_date": null,
+    "failure_to_sign_renewal": false,
+    "neighborhood": "Bayview Hunters Point",
+    ":@computed_region_yftq_j783": "10",
+    "owner_move_in": false,
+    "illegal_use": false,
+    "unapproved_subtenant": false,
+    "condo_conversion": false,
+    ":@computed_region_26cr_cadq": "9",
+    "nuisance": true,
+    ":@computed_region_rxqg_mtj9": "8",
+    "access_denial": false,
+    ":@computed_region_ajp5_b2md": "1",
+    "demolition": false,
+    "file_date": "2020-05-06T00:00:00.000",
+    ":@computed_region_qgnn_b9vv": "2",
+    "substantial_rehab": false,
+    "late_payments": false,
+    ":@computed_region_bh8s_q3mv": "58",
+    "capital_improvement": false,
+    ":@computed_region_6pnf_4xz7": "1",
+    "address": "300 Block Of Executive Park  Boulevard",
+    "breach": false,
+    "development": false,
+    "ellis_act_withdrawal": false,
+    "other_cause": false,
+    "non_payment": false,
+    "supervisor_district": "10",
+    ":@computed_region_9jxd_iqea": null,
+    ":@computed_region_6ezc_tdp2": null
+    }
+    },
+    {
+    "type": "Feature",
+    "geometry": {
+    "type": "Point",
+    "coordinates": [
+    -122.42081310321254,
+    37.783620069676665
+    ]
+    },
+    "properties": {
+    "eviction_id": "M200677",
+    "good_samaritan_ends": false,
+    "roommate_same_unit": false,
+    ":@computed_region_fyvs_ahh9": "36",
+    "city": "San Francisco",
+    ":@computed_region_6qbp_sg9q": "20",
+    ":@computed_region_h4ep_8xdi": "1",
+    ":@computed_region_p5aj_wyqh": "9",
+    ":@computed_region_pigm_ib2e": null,
+    "zip": "94109",
+    "lead_remediation": false,
+    "state": "CA",
+    "constraints_date": null,
+    "failure_to_sign_renewal": false,
+    "neighborhood": "Tenderloin",
+    ":@computed_region_yftq_j783": "7",
+    "owner_move_in": false,
+    "illegal_use": false,
+    "unapproved_subtenant": false,
+    "condo_conversion": false,
+    ":@computed_region_26cr_cadq": "10",
+    "nuisance": false,
+    ":@computed_region_rxqg_mtj9": "9",
+    "access_denial": false,
+    ":@computed_region_ajp5_b2md": "36",
+    "demolition": false,
+    "file_date": "2020-05-06T00:00:00.000",
+    ":@computed_region_qgnn_b9vv": "4",
+    "substantial_rehab": false,
+    "late_payments": false,
+    ":@computed_region_bh8s_q3mv": "28858",
+    "capital_improvement": false,
+    ":@computed_region_6pnf_4xz7": "2",
+    "address": "800 Block Of Van Ness  Avenue",
+    "breach": true,
+    "development": false,
+    "ellis_act_withdrawal": false,
+    "other_cause": false,
+    "non_payment": false,
+    "supervisor_district": "6",
+    ":@computed_region_9jxd_iqea": null,
+    ":@computed_region_6ezc_tdp2": "1"
+    }
+    },
+    {
+    "type": "Feature",
+    "geometry": {
+    "type": "Point",
+    "coordinates": [
+    -122.4383387021473,
+    37.77827536921471
+    ]
+    },
+    "properties": {
+    "eviction_id": "M200680",
+    "good_samaritan_ends": false,
+    "roommate_same_unit": false,
+    ":@computed_region_fyvs_ahh9": "41",
+    "city": "San Francisco",
+    ":@computed_region_6qbp_sg9q": "97",
+    ":@computed_region_h4ep_8xdi": null,
+    ":@computed_region_p5aj_wyqh": "5",
+    ":@computed_region_pigm_ib2e": null,
+    "zip": "94115",
+    "lead_remediation": false,
+    "state": "CA",
+    "constraints_date": null,
+    "failure_to_sign_renewal": false,
+    "neighborhood": "Western Addition",
+    ":@computed_region_yftq_j783": "15",
+    "owner_move_in": false,
+    "illegal_use": false,
+    "unapproved_subtenant": false,
+    "condo_conversion": false,
+    ":@computed_region_26cr_cadq": "11",
+    "nuisance": true,
+    ":@computed_region_rxqg_mtj9": "11",
+    "access_denial": false,
+    ":@computed_region_ajp5_b2md": "39",
+    "demolition": false,
+    "file_date": "2020-05-06T00:00:00.000",
+    ":@computed_region_qgnn_b9vv": "4",
+    "substantial_rehab": false,
+    "late_payments": false,
+    ":@computed_region_bh8s_q3mv": "29490",
+    "capital_improvement": false,
+    ":@computed_region_6pnf_4xz7": "1",
+    "address": "900 Block Of Divisadero  Street",
+    "breach": false,
+    "development": false,
+    "ellis_act_withdrawal": false,
+    "other_cause": false,
+    "non_payment": false,
+    "supervisor_district": "5",
+    ":@computed_region_9jxd_iqea": null,
+    ":@computed_region_6ezc_tdp2": null
+    }
+    }
+    ]
+    "crs": {
+        "type": "name",
+        "properties": {
+        "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+        }}

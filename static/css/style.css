@@ -1,0 +1,42 @@
+
+
+#map,
+body,
+html {
+  height: 100%;
+}
+
+
+.nav {
+  padding: 15px;
+  background-color: lightblue;
+ 
+}
+
+#pie {
+  width: 1000px ;
+}
+
+.legend {
+  padding: 1.5px;
+  font-family: serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #555;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.real-estate-container {
+  padding-top: 50px;
+  padding-left: 10px;
+}
+
+footer {
+  background-color: lightblue;
+  padding: 20px;
+  /* margin: 20px; */
+  /* margin: 20px; */
+}

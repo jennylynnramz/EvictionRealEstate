@@ -1,0 +1,6197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Geo JSON SF Evictions</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <!-- NAV BAR -->
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="#">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"> Interactive Map</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Evictions & Real Estate Data</a>
+    </li>
+  </ul> 
+
+ <!-- Page Content -->
+ <div class="container">
+  <div class="row">
+      <div class="box">
+<h3>Data</h3>         
+<hr>
+<p>The following table contains the real estate data used in this project.</p> 
+<!-- Begin Table -->
+  
+<table class="table table-hover table-striped mt-5">
+  <thead>
+    <tr style="text-align: center;">
+        <th>ID</th>
+        <th>Property Type</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Price</th>
+        <th>Beds</th>
+        <th>Baths</th>
+        <th>Neighborhood</th>
+        <th>Square Foot</th>
+        <th>Price Square Foot</th>
+        <th>HOA Month</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Built Year</th>
+        <th>Coordinates</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Condo/Co-op</td>
+        <td>1548 Jones St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>1400000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Nob Hill</td>
+        <td>1158.0</td>
+        <td>1209.0</td>
+        <td>339.0</td>
+        <td>37.795687</td>
+        <td>-122.414775</td>
+        <td>1910.0</td>
+        <td>37.7956865,-122.4147746</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Condo/Co-op</td>
+        <td>2200 Market St #402</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1150000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>Castro/Upper Market</td>
+        <td>825.0</td>
+        <td>1394.0</td>
+        <td>627.0</td>
+        <td>37.765789</td>
+        <td>-122.431598</td>
+        <td>2014.0</td>
+        <td>37.7657893,-122.431598</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Condo/Co-op</td>
+        <td>2040 Franklin St #1004</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>998000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Pacific Heights</td>
+        <td>919.0</td>
+        <td>1086.0</td>
+        <td>942.0</td>
+        <td>37.793519</td>
+        <td>-122.424316</td>
+        <td>1966.0</td>
+        <td>37.7935189,-122.4243158</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Condo/Co-op</td>
+        <td>1425 Vallejo St #205</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>1349000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Russian Hill</td>
+        <td>1034.0</td>
+        <td>1305.0</td>
+        <td>744.0</td>
+        <td>37.796735</td>
+        <td>-122.420827</td>
+        <td>1982.0</td>
+        <td>37.7967355,-122.42082659999998</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Condo/Co-op</td>
+        <td>260 King St #903</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1249000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Mission Bay</td>
+        <td>1286.0</td>
+        <td>971.0</td>
+        <td>932.0</td>
+        <td>37.777642</td>
+        <td>-122.393418</td>
+        <td>2004.0</td>
+        <td>37.7776422,-122.39341809999999</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Condo/Co-op</td>
+        <td>125 Gilbert St #5</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>929000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>South of Market</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>667.0</td>
+        <td>37.773085</td>
+        <td>-122.402091</td>
+        <td>1996.0</td>
+        <td>37.7730847,-122.40209080000001</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Condo/Co-op</td>
+        <td>77 Van Ness Ave #505</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94102</td>
+        <td>845000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Tenderloin</td>
+        <td>947.0</td>
+        <td>892.0</td>
+        <td>443.0</td>
+        <td>37.776055</td>
+        <td>-122.419937</td>
+        <td>2009.0</td>
+        <td>37.7760549,-122.41993719999999</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>351 29th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94121</td>
+        <td>2668000</td>
+        <td>6.0</td>
+        <td>4.00</td>
+        <td>Outer Richmond</td>
+        <td>3038.0</td>
+        <td>878.0</td>
+        <td>NaN</td>
+        <td>37.782705</td>
+        <td>-122.489551</td>
+        <td>1911.0</td>
+        <td>37.782705,-122.4895507</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Condo/Co-op</td>
+        <td>1260 Clay St #205</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94108</td>
+        <td>799000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Nob Hill</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>575.0</td>
+        <td>37.793571</td>
+        <td>-122.413681</td>
+        <td>1950.0</td>
+        <td>37.7935706,-122.4136811</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Condo/Co-op</td>
+        <td>115 Carl St #3</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>685000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Lone Mountain/USF</td>
+        <td>572.0</td>
+        <td>1198.0</td>
+        <td>360.0</td>
+        <td>37.765585</td>
+        <td>-122.450428</td>
+        <td>1964.0</td>
+        <td>37.7655847,-122.4504283</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Condo/Co-op</td>
+        <td>2987 Harrison St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1325000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Mission</td>
+        <td>1658.0</td>
+        <td>799.0</td>
+        <td>180.0</td>
+        <td>37.749783</td>
+        <td>-122.411310</td>
+        <td>1900.0</td>
+        <td>37.749783,-122.4113096</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Condo/Co-op</td>
+        <td>1805 Pine St #22</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>609000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Pacific Heights</td>
+        <td>525.0</td>
+        <td>1160.0</td>
+        <td>484.0</td>
+        <td>37.788791</td>
+        <td>-122.425646</td>
+        <td>1924.0</td>
+        <td>37.788791100000005,-122.4256463</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Single Family Residential</td>
+        <td>1469 Palou Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94124</td>
+        <td>999000</td>
+        <td>4.0</td>
+        <td>2.00</td>
+        <td>Bayview Hunters Point</td>
+        <td>2362.0</td>
+        <td>423.0</td>
+        <td>NaN</td>
+        <td>37.732407</td>
+        <td>-122.388632</td>
+        <td>1900.0</td>
+        <td>37.732407099999996,-122.3886318</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Condo/Co-op</td>
+        <td>400 Beale St #1314</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1599000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1433.0</td>
+        <td>1116.0</td>
+        <td>978.0</td>
+        <td>37.786905</td>
+        <td>-122.390920</td>
+        <td>2001.0</td>
+        <td>37.7869049,-122.39092020000001</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Condo/Co-op</td>
+        <td>10 Innes Ct #106</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94124</td>
+        <td>674998</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Bayview Hunters Point</td>
+        <td>750.0</td>
+        <td>900.0</td>
+        <td>420.0</td>
+        <td>37.728068</td>
+        <td>-122.367997</td>
+        <td>2018.0</td>
+        <td>37.7280682,-122.3679965</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>Condo/Co-op</td>
+        <td>1150 Folsom St #4</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>999000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>South of Market</td>
+        <td>1200.0</td>
+        <td>833.0</td>
+        <td>524.0</td>
+        <td>37.775950</td>
+        <td>-122.409294</td>
+        <td>2000.0</td>
+        <td>37.7759504,-122.4092942</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>Condo/Co-op</td>
+        <td>631 Folsom St Unit 10C</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1249995</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1054.0</td>
+        <td>1186.0</td>
+        <td>994.0</td>
+        <td>37.784730</td>
+        <td>-122.396861</td>
+        <td>2009.0</td>
+        <td>37.784730200000006,-122.39686119999999</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>Condo/Co-op</td>
+        <td>1075 Market St #211</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>579998</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>423.0</td>
+        <td>1371.0</td>
+        <td>626.0</td>
+        <td>37.780800</td>
+        <td>-122.411834</td>
+        <td>2018.0</td>
+        <td>37.7807996,-122.4118342</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>Condo/Co-op</td>
+        <td>1160 Mission St #810</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>799000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>755.0</td>
+        <td>1058.0</td>
+        <td>777.0</td>
+        <td>37.778704</td>
+        <td>-122.412634</td>
+        <td>2008.0</td>
+        <td>37.7787037,-122.4126341</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>Single Family Residential</td>
+        <td>1231 Judah St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>1395000</td>
+        <td>3.0</td>
+        <td>4.00</td>
+        <td>Inner Sunset</td>
+        <td>1720.0</td>
+        <td>811.0</td>
+        <td>NaN</td>
+        <td>37.761522</td>
+        <td>-122.475415</td>
+        <td>1937.0</td>
+        <td>37.761522,-122.47541499999998</td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>Single Family Residential</td>
+        <td>817 Guerrero St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>2600000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Castro/Upper Market</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.758045</td>
+        <td>-122.423300</td>
+        <td>1900.0</td>
+        <td>37.758045,-122.4232997</td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td>Condo/Co-op</td>
+        <td>1875 Mission St #108</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>649000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Mission</td>
+        <td>619.0</td>
+        <td>1048.0</td>
+        <td>526.0</td>
+        <td>37.767101</td>
+        <td>-122.419446</td>
+        <td>2014.0</td>
+        <td>37.7671013,-122.41944609999999</td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>Condo/Co-op</td>
+        <td>221 Clara St #1</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1175000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>South of Market</td>
+        <td>1518.0</td>
+        <td>774.0</td>
+        <td>471.0</td>
+        <td>37.778940</td>
+        <td>-122.402754</td>
+        <td>2000.0</td>
+        <td>37.7789397,-122.4027541</td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td>Condo/Co-op</td>
+        <td>407 Miguel St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>649000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Glen Park</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>245.0</td>
+        <td>37.736680</td>
+        <td>-122.426822</td>
+        <td>1890.0</td>
+        <td>37.73668,-122.426822</td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td>Condo/Co-op</td>
+        <td>1477 Dolores St #1477</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1598000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Noe Valley</td>
+        <td>1483.0</td>
+        <td>1078.0</td>
+        <td>345.0</td>
+        <td>37.745819</td>
+        <td>-122.424186</td>
+        <td>1906.0</td>
+        <td>37.7458186,-122.42418590000001</td>
+      </tr>
+      <tr>
+        <td>27</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>2437-2441 Post St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94115</td>
+        <td>2149000</td>
+        <td>9.0</td>
+        <td>3.00</td>
+        <td>Pacific Heights</td>
+        <td>4260.0</td>
+        <td>504.0</td>
+        <td>NaN</td>
+        <td>37.783741</td>
+        <td>-122.441964</td>
+        <td>1895.0</td>
+        <td>37.7837411,-122.4419644</td>
+      </tr>
+      <tr>
+        <td>33</td>
+        <td>Single Family Residential</td>
+        <td>1222 43rd Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>949000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Sunset/Parkside</td>
+        <td>1075.0</td>
+        <td>883.0</td>
+        <td>NaN</td>
+        <td>37.763828</td>
+        <td>-122.502742</td>
+        <td>1924.0</td>
+        <td>37.7638278,-122.5027416</td>
+      </tr>
+      <tr>
+        <td>34</td>
+        <td>Single Family Residential</td>
+        <td>1670 Newcomb Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94124</td>
+        <td>850000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Bayview Hunters Point</td>
+        <td>1041.0</td>
+        <td>817.0</td>
+        <td>NaN</td>
+        <td>37.736228</td>
+        <td>-122.390997</td>
+        <td>1936.0</td>
+        <td>37.736227500000005,-122.39099740000002</td>
+      </tr>
+      <tr>
+        <td>35</td>
+        <td>Condo/Co-op</td>
+        <td>10 South Park St #9</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1399000</td>
+        <td>2.0</td>
+        <td>1.75</td>
+        <td>South of Market</td>
+        <td>1145.0</td>
+        <td>1222.0</td>
+        <td>792.0</td>
+        <td>37.782357</td>
+        <td>-122.393504</td>
+        <td>1993.0</td>
+        <td>37.782357,-122.3935037</td>
+      </tr>
+      <tr>
+        <td>37</td>
+        <td>Condo/Co-op</td>
+        <td>401 Harrison St Unit 24G</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1149000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>760.0</td>
+        <td>1512.0</td>
+        <td>1225.0</td>
+        <td>37.786499</td>
+        <td>-122.392149</td>
+        <td>2014.0</td>
+        <td>37.7864989,-122.39214869999999</td>
+      </tr>
+      <tr>
+        <td>38</td>
+        <td>Multi-Family (5+ Unit)</td>
+        <td>888 Waller St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>3750000</td>
+        <td>12.0</td>
+        <td>NaN</td>
+        <td>Haight Ashbury</td>
+        <td>5820.0</td>
+        <td>644.0</td>
+        <td>NaN</td>
+        <td>37.770382</td>
+        <td>-122.438308</td>
+        <td>1900.0</td>
+        <td>37.7703816,-122.4383084</td>
+      </tr>
+      <tr>
+        <td>39</td>
+        <td>Condo/Co-op</td>
+        <td>197-199 Joost Ave #199</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>878000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Oceanview/Merced/Ingleside</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>271.0</td>
+        <td>37.732239</td>
+        <td>-122.439469</td>
+        <td>1908.0</td>
+        <td>37.732239,-122.4394685</td>
+      </tr>
+      <tr>
+        <td>40</td>
+        <td>Condo/Co-op</td>
+        <td>451 Kansas St #573</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>889000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Potrero Hill</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>520.0</td>
+        <td>37.764113</td>
+        <td>-122.402986</td>
+        <td>2007.0</td>
+        <td>37.764113,-122.4029865</td>
+      </tr>
+      <tr>
+        <td>41</td>
+        <td>Condo/Co-op</td>
+        <td>262 6th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>1895000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Inner Richmond</td>
+        <td>2045.0</td>
+        <td>927.0</td>
+        <td>230.0</td>
+        <td>37.783665</td>
+        <td>-122.464249</td>
+        <td>1905.0</td>
+        <td>37.783665299999996,-122.464249</td>
+      </tr>
+      <tr>
+        <td>42</td>
+        <td>Condo/Co-op</td>
+        <td>590 Lombard St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94133</td>
+        <td>2195000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>North Beach</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.803194</td>
+        <td>-122.411154</td>
+        <td>1926.0</td>
+        <td>37.8031941,-122.41115400000001</td>
+      </tr>
+      <tr>
+        <td>43</td>
+        <td>Condo/Co-op</td>
+        <td>77 Dow Pl #102</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1019000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>South of Market</td>
+        <td>1173.0</td>
+        <td>869.0</td>
+        <td>870.0</td>
+        <td>37.784156</td>
+        <td>-122.396619</td>
+        <td>2002.0</td>
+        <td>37.7841561,-122.3966189</td>
+      </tr>
+      <tr>
+        <td>44</td>
+        <td>Condo/Co-op</td>
+        <td>2448 Lombard St #310</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>1768000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Marina</td>
+        <td>1141.0</td>
+        <td>1550.0</td>
+        <td>683.0</td>
+        <td>37.799331</td>
+        <td>-122.442059</td>
+        <td>2020.0</td>
+        <td>37.799330700000006,-122.44205929999998</td>
+      </tr>
+      <tr>
+        <td>45</td>
+        <td>Condo/Co-op</td>
+        <td>2448 Lombard St #201</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>988000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Marina</td>
+        <td>733.0</td>
+        <td>1348.0</td>
+        <td>602.0</td>
+        <td>37.799331</td>
+        <td>-122.442059</td>
+        <td>2020.0</td>
+        <td>37.799330700000006,-122.44205929999998</td>
+      </tr>
+      <tr>
+        <td>46</td>
+        <td>Single Family Residential</td>
+        <td>1058-1060 Fulton St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>4998000</td>
+        <td>7.0</td>
+        <td>5.00</td>
+        <td>Alamo Square</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.777562</td>
+        <td>-122.434218</td>
+        <td>1911.0</td>
+        <td>37.777562200000006,-122.43421790000001</td>
+      </tr>
+      <tr>
+        <td>47</td>
+        <td>Single Family Residential</td>
+        <td>906 Capitol Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>828000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Oceanview/Merced/Ingleside</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.718413</td>
+        <td>-122.459042</td>
+        <td>1922.0</td>
+        <td>37.718413,-122.459042</td>
+      </tr>
+      <tr>
+        <td>48</td>
+        <td>Condo/Co-op</td>
+        <td>3641 Webster</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>1895000</td>
+        <td>2.0</td>
+        <td>1.50</td>
+        <td>Marina</td>
+        <td>1605.0</td>
+        <td>1181.0</td>
+        <td>437.0</td>
+        <td>37.804322</td>
+        <td>-122.435565</td>
+        <td>NaN</td>
+        <td>37.804322,-122.435565</td>
+      </tr>
+      <tr>
+        <td>49</td>
+        <td>Condo/Co-op</td>
+        <td>232 Castro St #2</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1875000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Castro/Upper Market</td>
+        <td>1844.0</td>
+        <td>1017.0</td>
+        <td>583.0</td>
+        <td>37.765163</td>
+        <td>-122.435752</td>
+        <td>1997.0</td>
+        <td>37.765162700000005,-122.43575220000001</td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td>Single Family Residential</td>
+        <td>308 Los Palmos Dr</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>1250000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Glen Park</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.735972</td>
+        <td>-122.450300</td>
+        <td>1960.0</td>
+        <td>37.7359723,-122.45029960000001</td>
+      </tr>
+      <tr>
+        <td>51</td>
+        <td>Condo/Co-op</td>
+        <td>1462 Broadway</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>1195000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Nob Hill</td>
+        <td>1171.0</td>
+        <td>1020.0</td>
+        <td>572.0</td>
+        <td>37.796168</td>
+        <td>-122.421171</td>
+        <td>1909.0</td>
+        <td>37.796168,-122.421171</td>
+      </tr>
+      <tr>
+        <td>52</td>
+        <td>Condo/Co-op</td>
+        <td>170 King St #601</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1299999</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1005.0</td>
+        <td>1294.0</td>
+        <td>752.0</td>
+        <td>37.778982</td>
+        <td>-122.391751</td>
+        <td>2007.0</td>
+        <td>37.7789817,-122.39175149999998</td>
+      </tr>
+      <tr>
+        <td>53</td>
+        <td>Single Family Residential</td>
+        <td>1968 Greenwich St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>3425000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Pacific Heights</td>
+        <td>2418.0</td>
+        <td>1416.0</td>
+        <td>200.0</td>
+        <td>37.799718</td>
+        <td>-122.432113</td>
+        <td>1900.0</td>
+        <td>37.799718,-122.43211299999999</td>
+      </tr>
+      <tr>
+        <td>54</td>
+        <td>Condo/Co-op</td>
+        <td>1966 Greenwich St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>1400000</td>
+        <td>2.0</td>
+        <td>1.50</td>
+        <td>Pacific Heights</td>
+        <td>1066.0</td>
+        <td>1313.0</td>
+        <td>100.0</td>
+        <td>37.799665</td>
+        <td>-122.432131</td>
+        <td>1900.0</td>
+        <td>37.799664899999996,-122.4321307</td>
+      </tr>
+      <tr>
+        <td>55</td>
+        <td>Single Family Residential</td>
+        <td>4330 19th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>2195000</td>
+        <td>3.0</td>
+        <td>1.50</td>
+        <td>Castro/Upper Market</td>
+        <td>1845.0</td>
+        <td>1190.0</td>
+        <td>NaN</td>
+        <td>37.759306</td>
+        <td>-122.437727</td>
+        <td>1906.0</td>
+        <td>37.759306,-122.437727</td>
+      </tr>
+      <tr>
+        <td>57</td>
+        <td>Condo/Co-op</td>
+        <td>950 Tennessee St #109</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>929000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Mission Bay</td>
+        <td>777.0</td>
+        <td>1196.0</td>
+        <td>544.0</td>
+        <td>37.759675</td>
+        <td>-122.389825</td>
+        <td>2020.0</td>
+        <td>37.759674700000005,-122.38982450000002</td>
+      </tr>
+      <tr>
+        <td>58</td>
+        <td>Condo/Co-op</td>
+        <td>3953 24th St #1</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>799000</td>
+        <td>1.0</td>
+        <td>2.00</td>
+        <td>Noe Valley</td>
+        <td>813.0</td>
+        <td>983.0</td>
+        <td>625.0</td>
+        <td>37.751248</td>
+        <td>-122.430783</td>
+        <td>2004.0</td>
+        <td>37.751247799999994,-122.43078340000001</td>
+      </tr>
+      <tr>
+        <td>59</td>
+        <td>Condo/Co-op</td>
+        <td>710 Arguello Blvd</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>1445000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Lone Mountain/USF</td>
+        <td>1375.0</td>
+        <td>1051.0</td>
+        <td>395.0</td>
+        <td>37.776904</td>
+        <td>-122.458309</td>
+        <td>1919.0</td>
+        <td>37.776903499999996,-122.45830890000002</td>
+      </tr>
+      <tr>
+        <td>60</td>
+        <td>Single Family Residential</td>
+        <td>26 Maddux Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94124</td>
+        <td>1400000</td>
+        <td>4.0</td>
+        <td>2.00</td>
+        <td>Bayview Hunters Point</td>
+        <td>1860.0</td>
+        <td>753.0</td>
+        <td>NaN</td>
+        <td>37.734807</td>
+        <td>-122.398488</td>
+        <td>1941.0</td>
+        <td>37.73480670000001,-122.3984875</td>
+      </tr>
+      <tr>
+        <td>61</td>
+        <td>Single Family Residential</td>
+        <td>2614 25th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94116</td>
+        <td>1149000</td>
+        <td>3.0</td>
+        <td>1.00</td>
+        <td>Sunset/Parkside</td>
+        <td>1300.0</td>
+        <td>884.0</td>
+        <td>NaN</td>
+        <td>37.738722</td>
+        <td>-122.481629</td>
+        <td>1947.0</td>
+        <td>37.7387219,-122.481629</td>
+      </tr>
+      <tr>
+        <td>62</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>969-971 Oak St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>2150000</td>
+        <td>5.0</td>
+        <td>2.00</td>
+        <td>Hayes Valley</td>
+        <td>2227.0</td>
+        <td>965.0</td>
+        <td>NaN</td>
+        <td>37.773131</td>
+        <td>-122.435174</td>
+        <td>1900.0</td>
+        <td>37.773131299999996,-122.43517379999999</td>
+      </tr>
+      <tr>
+        <td>63</td>
+        <td>Townhouse</td>
+        <td>200 Dolores St #3</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>1749000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>Mission</td>
+        <td>1441.0</td>
+        <td>1214.0</td>
+        <td>727.0</td>
+        <td>37.766057</td>
+        <td>-122.426923</td>
+        <td>2014.0</td>
+        <td>37.766057200000006,-122.4269225</td>
+      </tr>
+      <tr>
+        <td>64</td>
+        <td>Condo/Co-op</td>
+        <td>55 Red Rock Way Unit 110O</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>489000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Twin Peaks</td>
+        <td>474.0</td>
+        <td>1032.0</td>
+        <td>491.0</td>
+        <td>37.745986</td>
+        <td>-122.441018</td>
+        <td>1972.0</td>
+        <td>37.7459864,-122.4410176</td>
+      </tr>
+      <tr>
+        <td>65</td>
+        <td>Condo/Co-op</td>
+        <td>1298 Treat Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1249000</td>
+        <td>4.0</td>
+        <td>2.00</td>
+        <td>Mission</td>
+        <td>1250.0</td>
+        <td>999.0</td>
+        <td>360.0</td>
+        <td>37.749378</td>
+        <td>-122.412712</td>
+        <td>1900.0</td>
+        <td>37.7493778,-122.4127122</td>
+      </tr>
+      <tr>
+        <td>66</td>
+        <td>Condo/Co-op</td>
+        <td>1440 Broadway #304</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>799000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Nob Hill</td>
+        <td>685.0</td>
+        <td>1166.0</td>
+        <td>677.0</td>
+        <td>37.796385</td>
+        <td>-122.420727</td>
+        <td>1982.0</td>
+        <td>37.7963851,-122.42072649999999</td>
+      </tr>
+      <tr>
+        <td>67</td>
+        <td>Condo/Co-op</td>
+        <td>1625 Lake St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94121</td>
+        <td>1549000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Lakeshore</td>
+        <td>1577.0</td>
+        <td>982.0</td>
+        <td>200.0</td>
+        <td>37.785911</td>
+        <td>-122.477130</td>
+        <td>1995.0</td>
+        <td>37.785911,-122.4771297</td>
+      </tr>
+      <tr>
+        <td>68</td>
+        <td>Condo/Co-op</td>
+        <td>1483 Oak St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>1795000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Haight Ashbury</td>
+        <td>2584.0</td>
+        <td>695.0</td>
+        <td>250.0</td>
+        <td>37.772086</td>
+        <td>-122.443644</td>
+        <td>1900.0</td>
+        <td>37.772086,-122.44364399999999</td>
+      </tr>
+      <tr>
+        <td>69</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>1029 Anza St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>1495000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Inner Richmond</td>
+        <td>2300.0</td>
+        <td>650.0</td>
+        <td>NaN</td>
+        <td>37.779110</td>
+        <td>-122.459352</td>
+        <td>1905.0</td>
+        <td>37.7791099,-122.45935159999998</td>
+      </tr>
+      <tr>
+        <td>70</td>
+        <td>Single Family Residential</td>
+        <td>32 Josiah Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>799000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Oceanview/Merced/Ingleside</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.718626</td>
+        <td>-122.452994</td>
+        <td>1900.0</td>
+        <td>37.7186265,-122.4529937</td>
+      </tr>
+      <tr>
+        <td>71</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>2637 Baker St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>2998000</td>
+        <td>9.0</td>
+        <td>2.00</td>
+        <td>Pacific Heights</td>
+        <td>5055.0</td>
+        <td>593.0</td>
+        <td>NaN</td>
+        <td>37.795391</td>
+        <td>-122.445638</td>
+        <td>1913.0</td>
+        <td>37.7953907,-122.4456377</td>
+      </tr>
+      <tr>
+        <td>73</td>
+        <td>Condo/Co-op</td>
+        <td>2172 Pine St #2</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94115</td>
+        <td>1249000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Pacific Heights</td>
+        <td>1201.0</td>
+        <td>1040.0</td>
+        <td>330.0</td>
+        <td>37.788505</td>
+        <td>-122.431537</td>
+        <td>1875.0</td>
+        <td>37.7885051,-122.43153659999999</td>
+      </tr>
+      <tr>
+        <td>74</td>
+        <td>Multi-Family (5+ Unit)</td>
+        <td>500-504 8th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>2868000</td>
+        <td>6.0</td>
+        <td>NaN</td>
+        <td>Inner Richmond</td>
+        <td>5015.0</td>
+        <td>572.0</td>
+        <td>NaN</td>
+        <td>37.778893</td>
+        <td>-122.466173</td>
+        <td>1907.0</td>
+        <td>37.778893200000006,-122.46617320000001</td>
+      </tr>
+      <tr>
+        <td>75</td>
+        <td>Condo/Co-op</td>
+        <td>188 Minna St Unit 32D</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>3849000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>South of Market</td>
+        <td>1792.0</td>
+        <td>2148.0</td>
+        <td>2744.0</td>
+        <td>37.786146</td>
+        <td>-122.401301</td>
+        <td>2005.0</td>
+        <td>37.786146200000005,-122.4013007</td>
+      </tr>
+      <tr>
+        <td>76</td>
+        <td>Condo/Co-op</td>
+        <td>494 Filbert St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94133</td>
+        <td>1295000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>North Beach</td>
+        <td>981.0</td>
+        <td>1320.0</td>
+        <td>120.0</td>
+        <td>37.801755</td>
+        <td>-122.407702</td>
+        <td>1939.0</td>
+        <td>37.801755299999996,-122.4077021</td>
+      </tr>
+      <tr>
+        <td>77</td>
+        <td>Single Family Residential</td>
+        <td>421 Point Lobos Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94121</td>
+        <td>1395000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Outer Richmond</td>
+        <td>1443.0</td>
+        <td>967.0</td>
+        <td>NaN</td>
+        <td>37.779638</td>
+        <td>-122.507726</td>
+        <td>1941.0</td>
+        <td>37.7796376,-122.5077261</td>
+      </tr>
+      <tr>
+        <td>78</td>
+        <td>Condo/Co-op</td>
+        <td>355 Bryant St #104</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>2495000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>2206.0</td>
+        <td>1131.0</td>
+        <td>950.0</td>
+        <td>37.783551</td>
+        <td>-122.392421</td>
+        <td>1917.0</td>
+        <td>37.7835506,-122.39242150000001</td>
+      </tr>
+      <tr>
+        <td>79</td>
+        <td>Single Family Residential</td>
+        <td>530 Crescent Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1179000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Bernal Heights</td>
+        <td>1125.0</td>
+        <td>1048.0</td>
+        <td>NaN</td>
+        <td>37.734719</td>
+        <td>-122.415745</td>
+        <td>1938.0</td>
+        <td>37.7347192,-122.415745</td>
+      </tr>
+      <tr>
+        <td>80</td>
+        <td>Condo/Co-op</td>
+        <td>1410 Shrader St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>1645000</td>
+        <td>2.0</td>
+        <td>1.50</td>
+        <td>Lone Mountain/USF</td>
+        <td>1607.0</td>
+        <td>1024.0</td>
+        <td>170.0</td>
+        <td>37.762191</td>
+        <td>-122.450426</td>
+        <td>1916.0</td>
+        <td>37.762190999999994,-122.45042600000001</td>
+      </tr>
+      <tr>
+        <td>81</td>
+        <td>Condo/Co-op</td>
+        <td>400 Beale St #506</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1049000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>1038.0</td>
+        <td>1011.0</td>
+        <td>NaN</td>
+        <td>37.786905</td>
+        <td>-122.390920</td>
+        <td>2002.0</td>
+        <td>37.7869049,-122.39092020000001</td>
+      </tr>
+      <tr>
+        <td>82</td>
+        <td>Condo/Co-op</td>
+        <td>1788 Clay St #304</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>1350000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Nob Hill</td>
+        <td>975.0</td>
+        <td>1385.0</td>
+        <td>723.0</td>
+        <td>37.792570</td>
+        <td>-122.422250</td>
+        <td>2014.0</td>
+        <td>37.7925699,-122.42224979999999</td>
+      </tr>
+      <tr>
+        <td>83</td>
+        <td>Condo/Co-op</td>
+        <td>178 Randall St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1695000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>Glen Park</td>
+        <td>1465.0</td>
+        <td>1157.0</td>
+        <td>392.0</td>
+        <td>37.739855</td>
+        <td>-122.427402</td>
+        <td>2008.0</td>
+        <td>37.7398549,-122.4274019</td>
+      </tr>
+      <tr>
+        <td>84</td>
+        <td>Condo/Co-op</td>
+        <td>250 King St #952</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>2399000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Mission Bay</td>
+        <td>2450.0</td>
+        <td>979.0</td>
+        <td>1812.0</td>
+        <td>37.777642</td>
+        <td>-122.393418</td>
+        <td>2004.0</td>
+        <td>37.7776422,-122.39341809999999</td>
+      </tr>
+      <tr>
+        <td>85</td>
+        <td>Condo/Co-op</td>
+        <td>1895 Pacific Ave #104</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>599000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Pacific Heights</td>
+        <td>512.0</td>
+        <td>1170.0</td>
+        <td>440.0</td>
+        <td>37.794168</td>
+        <td>-122.426243</td>
+        <td>1931.0</td>
+        <td>37.7941676,-122.4262431</td>
+      </tr>
+      <tr>
+        <td>88</td>
+        <td>Single Family Residential</td>
+        <td>52 Santa Marina St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1645000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Bernal Heights</td>
+        <td>1601.0</td>
+        <td>1027.0</td>
+        <td>NaN</td>
+        <td>37.739964</td>
+        <td>-122.422037</td>
+        <td>1909.0</td>
+        <td>37.739964,-122.42203700000002</td>
+      </tr>
+      <tr>
+        <td>90</td>
+        <td>Single Family Residential</td>
+        <td>81 Pinehurst Way</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>1849000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Twin Peaks</td>
+        <td>2468.0</td>
+        <td>749.0</td>
+        <td>NaN</td>
+        <td>37.728052</td>
+        <td>-122.465201</td>
+        <td>1928.0</td>
+        <td>37.728052000000005,-122.4652006</td>
+      </tr>
+      <tr>
+        <td>91</td>
+        <td>Single Family Residential</td>
+        <td>2 Lake Forest Ct</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1495000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Twin Peaks</td>
+        <td>1408.0</td>
+        <td>1062.0</td>
+        <td>NaN</td>
+        <td>37.754578</td>
+        <td>-122.460004</td>
+        <td>1961.0</td>
+        <td>37.7545778,-122.460004</td>
+      </tr>
+      <tr>
+        <td>92</td>
+        <td>Condo/Co-op</td>
+        <td>1080 Chestnut St Unit 11B</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>3395000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Russian Hill</td>
+        <td>2105.0</td>
+        <td>1613.0</td>
+        <td>3122.0</td>
+        <td>37.803057</td>
+        <td>-122.421021</td>
+        <td>1962.0</td>
+        <td>37.803057,-122.42102120000001</td>
+      </tr>
+      <tr>
+        <td>93</td>
+        <td>Condo/Co-op</td>
+        <td>49 Zoe St #6</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>879000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>South of Market</td>
+        <td>987.0</td>
+        <td>891.0</td>
+        <td>550.0</td>
+        <td>37.780076</td>
+        <td>-122.396012</td>
+        <td>1997.0</td>
+        <td>37.7800761,-122.3960123</td>
+      </tr>
+      <tr>
+        <td>94</td>
+        <td>Single Family Residential</td>
+        <td>537 Magellan Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94116</td>
+        <td>2275000</td>
+        <td>5.0</td>
+        <td>3.50</td>
+        <td>Twin Peaks</td>
+        <td>2944.0</td>
+        <td>773.0</td>
+        <td>NaN</td>
+        <td>37.744027</td>
+        <td>-122.466914</td>
+        <td>1920.0</td>
+        <td>37.7440274,-122.4669143</td>
+      </tr>
+      <tr>
+        <td>95</td>
+        <td>Condo/Co-op</td>
+        <td>436-440 Scott St #438</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>1549000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Hayes Valley</td>
+        <td>1354.0</td>
+        <td>1144.0</td>
+        <td>350.0</td>
+        <td>37.773890</td>
+        <td>-122.435502</td>
+        <td>1895.0</td>
+        <td>37.7738902,-122.43550220000002</td>
+      </tr>
+      <tr>
+        <td>96</td>
+        <td>Condo/Co-op</td>
+        <td>1300 22nd St #107</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>795000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Potrero Hill</td>
+        <td>565.0</td>
+        <td>1407.0</td>
+        <td>568.0</td>
+        <td>37.757838</td>
+        <td>-122.394471</td>
+        <td>2016.0</td>
+        <td>37.7578379,-122.39447140000001</td>
+      </tr>
+      <tr>
+        <td>97</td>
+        <td>Condo/Co-op</td>
+        <td>200 Brannan St #234</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1995000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1892.0</td>
+        <td>1054.0</td>
+        <td>910.0</td>
+        <td>37.783600</td>
+        <td>-122.390707</td>
+        <td>2004.0</td>
+        <td>37.7836002,-122.3907074</td>
+      </tr>
+      <tr>
+        <td>98</td>
+        <td>Condo/Co-op</td>
+        <td>1776 Sacramento St #708</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>1498000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Nob Hill</td>
+        <td>1526.0</td>
+        <td>982.0</td>
+        <td>890.0</td>
+        <td>37.791618</td>
+        <td>-122.422098</td>
+        <td>1992.0</td>
+        <td>37.791618299999996,-122.42209820000001</td>
+      </tr>
+      <tr>
+        <td>99</td>
+        <td>Condo/Co-op</td>
+        <td>338 Spear St Unit 16G</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>999000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>807.0</td>
+        <td>1238.0</td>
+        <td>891.0</td>
+        <td>37.789414</td>
+        <td>-122.390643</td>
+        <td>2009.0</td>
+        <td>37.789413700000004,-122.3906433</td>
+      </tr>
+      <tr>
+        <td>100</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>237 San Jose Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>2800000</td>
+        <td>11.0</td>
+        <td>4.50</td>
+        <td>Noe Valley</td>
+        <td>4800.0</td>
+        <td>583.0</td>
+        <td>NaN</td>
+        <td>37.751439</td>
+        <td>-122.421260</td>
+        <td>1904.0</td>
+        <td>37.7514387,-122.42125970000001</td>
+      </tr>
+      <tr>
+        <td>101</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>170 Pfeiffer St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94133</td>
+        <td>5400000</td>
+        <td>6.0</td>
+        <td>4.50</td>
+        <td>North Beach</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.804831</td>
+        <td>-122.409628</td>
+        <td>NaN</td>
+        <td>37.8048306,-122.4096277</td>
+      </tr>
+      <tr>
+        <td>102</td>
+        <td>Condo/Co-op</td>
+        <td>301 Main St Unit 7C</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>2099000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>South of Market</td>
+        <td>1752.0</td>
+        <td>1198.0</td>
+        <td>1059.0</td>
+        <td>37.789597</td>
+        <td>-122.391197</td>
+        <td>2008.0</td>
+        <td>37.7895974,-122.3911965</td>
+      </tr>
+      <tr>
+        <td>103</td>
+        <td>Condo/Co-op</td>
+        <td>72 Townsend St #401</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1029000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>788.0</td>
+        <td>1306.0</td>
+        <td>792.0</td>
+        <td>37.781388</td>
+        <td>-122.390353</td>
+        <td>2015.0</td>
+        <td>37.781388,-122.39035249999999</td>
+      </tr>
+      <tr>
+        <td>104</td>
+        <td>Townhouse</td>
+        <td>232 Friedell St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94124</td>
+        <td>799999</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Bayview Hunters Point</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>271.0</td>
+        <td>37.728432</td>
+        <td>-122.370113</td>
+        <td>2016.0</td>
+        <td>37.728432,-122.37011310000001</td>
+      </tr>
+      <tr>
+        <td>105</td>
+        <td>Condo/Co-op</td>
+        <td>439 Greenwich St #9</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94133</td>
+        <td>750000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>North Beach</td>
+        <td>535.0</td>
+        <td>1402.0</td>
+        <td>525.0</td>
+        <td>37.802378</td>
+        <td>-122.407011</td>
+        <td>1979.0</td>
+        <td>37.8023778,-122.4070114</td>
+      </tr>
+      <tr>
+        <td>106</td>
+        <td>Condo/Co-op</td>
+        <td>456 Carl St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>1199000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Lone Mountain/USF</td>
+        <td>1271.0</td>
+        <td>943.0</td>
+        <td>485.0</td>
+        <td>37.765018</td>
+        <td>-122.456996</td>
+        <td>1990.0</td>
+        <td>37.765018,-122.4569962</td>
+      </tr>
+      <tr>
+        <td>107</td>
+        <td>Townhouse</td>
+        <td>77 Dow Pl #711</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1025000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>South of Market</td>
+        <td>1293.0</td>
+        <td>793.0</td>
+        <td>896.0</td>
+        <td>37.784156</td>
+        <td>-122.396619</td>
+        <td>2002.0</td>
+        <td>37.7841561,-122.3966189</td>
+      </tr>
+      <tr>
+        <td>108</td>
+        <td>Condo/Co-op</td>
+        <td>2100 Green St #704</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>3495000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Pacific Heights</td>
+        <td>1866.0</td>
+        <td>1873.0</td>
+        <td>1618.0</td>
+        <td>37.796589</td>
+        <td>-122.433981</td>
+        <td>1928.0</td>
+        <td>37.796589399999995,-122.4339807</td>
+      </tr>
+      <tr>
+        <td>109</td>
+        <td>Single Family Residential</td>
+        <td>124 Miguel St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1395000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Glen Park</td>
+        <td>1550.0</td>
+        <td>900.0</td>
+        <td>NaN</td>
+        <td>37.737942</td>
+        <td>-122.428642</td>
+        <td>1903.0</td>
+        <td>37.73794229999999,-122.4286419</td>
+      </tr>
+      <tr>
+        <td>110</td>
+        <td>Single Family Residential</td>
+        <td>627 16th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>1350000</td>
+        <td>3.0</td>
+        <td>1.00</td>
+        <td>Outer Richmond</td>
+        <td>2076.0</td>
+        <td>650.0</td>
+        <td>NaN</td>
+        <td>37.776172</td>
+        <td>-122.475109</td>
+        <td>1918.0</td>
+        <td>37.776171999999995,-122.475109</td>
+      </tr>
+      <tr>
+        <td>111</td>
+        <td>Single Family Residential</td>
+        <td>3467 Pacific Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>8950000</td>
+        <td>6.0</td>
+        <td>6.00</td>
+        <td>Presidio Heights</td>
+        <td>5625.0</td>
+        <td>1591.0</td>
+        <td>NaN</td>
+        <td>37.790895</td>
+        <td>-122.452076</td>
+        <td>1909.0</td>
+        <td>37.7908948,-122.45207590000001</td>
+      </tr>
+      <tr>
+        <td>112</td>
+        <td>Single Family Residential</td>
+        <td>109 Joost Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1028000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Oceanview/Merced/Ingleside</td>
+        <td>903.0</td>
+        <td>1138.0</td>
+        <td>NaN</td>
+        <td>37.732246</td>
+        <td>-122.437810</td>
+        <td>1923.0</td>
+        <td>37.7322456,-122.4378105</td>
+      </tr>
+      <tr>
+        <td>113</td>
+        <td>Condo/Co-op</td>
+        <td>555 4th St #913</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1288000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>907.0</td>
+        <td>1420.0</td>
+        <td>664.0</td>
+        <td>37.779422</td>
+        <td>-122.396712</td>
+        <td>2006.0</td>
+        <td>37.7794218,-122.39671240000001</td>
+      </tr>
+      <tr>
+        <td>114</td>
+        <td>Condo/Co-op</td>
+        <td>99 Rausch St #320</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>659000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>515.0</td>
+        <td>37.776235</td>
+        <td>-122.409022</td>
+        <td>2017.0</td>
+        <td>37.7762348,-122.4090223</td>
+      </tr>
+      <tr>
+        <td>115</td>
+        <td>Condo/Co-op</td>
+        <td>52 Innes Ct #203</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94124</td>
+        <td>649888</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Bayview Hunters Point</td>
+        <td>670.0</td>
+        <td>970.0</td>
+        <td>460.0</td>
+        <td>37.727622</td>
+        <td>-122.367429</td>
+        <td>2017.0</td>
+        <td>37.7276224,-122.3674287</td>
+      </tr>
+      <tr>
+        <td>116</td>
+        <td>Condo/Co-op</td>
+        <td>175 Red Rock Way Unit 207K</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>529000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Twin Peaks</td>
+        <td>592.0</td>
+        <td>894.0</td>
+        <td>492.0</td>
+        <td>37.745807</td>
+        <td>-122.442069</td>
+        <td>1972.0</td>
+        <td>37.745807,-122.44206899999999</td>
+      </tr>
+      <tr>
+        <td>117</td>
+        <td>Condo/Co-op</td>
+        <td>1047 Mississippi St #9</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>949000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>Potrero Hill</td>
+        <td>1385.0</td>
+        <td>685.0</td>
+        <td>526.0</td>
+        <td>37.753164</td>
+        <td>-122.393373</td>
+        <td>2001.0</td>
+        <td>37.753163799999996,-122.39337309999999</td>
+      </tr>
+      <tr>
+        <td>118</td>
+        <td>Single Family Residential</td>
+        <td>320 Ocean Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112-2532</td>
+        <td>1498888</td>
+        <td>5.0</td>
+        <td>3.00</td>
+        <td>Oceanview/Merced/Ingleside</td>
+        <td>2432.0</td>
+        <td>616.0</td>
+        <td>NaN</td>
+        <td>37.723238</td>
+        <td>-122.443605</td>
+        <td>1931.0</td>
+        <td>37.7232378,-122.4436053</td>
+      </tr>
+      <tr>
+        <td>119</td>
+        <td>Single Family Residential</td>
+        <td>715 Foerster St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>1735000</td>
+        <td>4.0</td>
+        <td>2.50</td>
+        <td>Glen Park</td>
+        <td>1909.0</td>
+        <td>909.0</td>
+        <td>25.0</td>
+        <td>37.734141</td>
+        <td>-122.449219</td>
+        <td>1960.0</td>
+        <td>37.734140999999994,-122.449219</td>
+      </tr>
+      <tr>
+        <td>120</td>
+        <td>Condo/Co-op</td>
+        <td>501 Crescent Way #5107</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94134</td>
+        <td>728000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Visitacion Valley</td>
+        <td>1095.0</td>
+        <td>665.0</td>
+        <td>540.0</td>
+        <td>37.711929</td>
+        <td>-122.388605</td>
+        <td>2006.0</td>
+        <td>37.711928799999995,-122.3886055</td>
+      </tr>
+      <tr>
+        <td>121</td>
+        <td>Condo/Co-op</td>
+        <td>875 Indiana St #324</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>975000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>Mission Bay</td>
+        <td>852.0</td>
+        <td>1144.0</td>
+        <td>523.0</td>
+        <td>37.759672</td>
+        <td>-122.390863</td>
+        <td>2009.0</td>
+        <td>37.759671600000004,-122.3908629</td>
+      </tr>
+      <tr>
+        <td>122</td>
+        <td>Single Family Residential</td>
+        <td>NaN</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94124</td>
+        <td>925000</td>
+        <td>3.0</td>
+        <td>1.00</td>
+        <td>Bayview Hunters Point</td>
+        <td>1155.0</td>
+        <td>801.0</td>
+        <td>NaN</td>
+        <td>37.731587</td>
+        <td>-122.386090</td>
+        <td>1961.0</td>
+        <td>37.73158660000001,-122.3860899</td>
+      </tr>
+      <tr>
+        <td>123</td>
+        <td>Single Family Residential</td>
+        <td>1710 Diamond St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>4498800</td>
+        <td>4.0</td>
+        <td>3.50</td>
+        <td>Noe Valley</td>
+        <td>3645.0</td>
+        <td>1234.0</td>
+        <td>NaN</td>
+        <td>37.743847</td>
+        <td>-122.435818</td>
+        <td>2014.0</td>
+        <td>37.7438471,-122.4358179</td>
+      </tr>
+      <tr>
+        <td>124</td>
+        <td>Condo/Co-op</td>
+        <td>235 Berry St #201</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94158</td>
+        <td>899000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Mission Bay</td>
+        <td>840.0</td>
+        <td>1070.0</td>
+        <td>689.0</td>
+        <td>37.774703</td>
+        <td>-122.394089</td>
+        <td>2007.0</td>
+        <td>37.774703,-122.39408929999999</td>
+      </tr>
+      <tr>
+        <td>125</td>
+        <td>Single Family Residential</td>
+        <td>1 Byron Ct</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>1388000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Outer Mission</td>
+        <td>2003.0</td>
+        <td>693.0</td>
+        <td>NaN</td>
+        <td>37.709636</td>
+        <td>-122.443384</td>
+        <td>1978.0</td>
+        <td>37.709635799999994,-122.4433842</td>
+      </tr>
+      <tr>
+        <td>126</td>
+        <td>Single Family Residential</td>
+        <td>439 E Princeton St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94134</td>
+        <td>999000</td>
+        <td>4.0</td>
+        <td>2.50</td>
+        <td>Portola</td>
+        <td>1306.0</td>
+        <td>765.0</td>
+        <td>NaN</td>
+        <td>37.724341</td>
+        <td>-122.414064</td>
+        <td>1949.0</td>
+        <td>37.724340600000005,-122.41406359999999</td>
+      </tr>
+      <tr>
+        <td>127</td>
+        <td>Condo/Co-op</td>
+        <td>3731 Fillmore St #6</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>995000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Marina</td>
+        <td>792.0</td>
+        <td>1256.0</td>
+        <td>430.0</td>
+        <td>37.804915</td>
+        <td>-122.437545</td>
+        <td>1928.0</td>
+        <td>37.8049149,-122.4375445</td>
+      </tr>
+      <tr>
+        <td>128</td>
+        <td>Single Family Residential</td>
+        <td>4118 20th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>3350000</td>
+        <td>4.0</td>
+        <td>3.50</td>
+        <td>Castro/Upper Market</td>
+        <td>2287.0</td>
+        <td>1465.0</td>
+        <td>NaN</td>
+        <td>37.757969</td>
+        <td>-122.432988</td>
+        <td>1905.0</td>
+        <td>37.7579691,-122.43298850000001</td>
+      </tr>
+      <tr>
+        <td>129</td>
+        <td>Single Family Residential</td>
+        <td>532 Lyon St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>4695000</td>
+        <td>5.0</td>
+        <td>4.50</td>
+        <td>Western Addition</td>
+        <td>3919.0</td>
+        <td>1198.0</td>
+        <td>NaN</td>
+        <td>37.775801</td>
+        <td>-122.442713</td>
+        <td>1904.0</td>
+        <td>37.7758013,-122.44271280000001</td>
+      </tr>
+      <tr>
+        <td>130</td>
+        <td>Condo/Co-op</td>
+        <td>1140 Page St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>2289000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Haight Ashbury</td>
+        <td>1850.0</td>
+        <td>1237.0</td>
+        <td>510.0</td>
+        <td>37.772120</td>
+        <td>-122.439567</td>
+        <td>2012.0</td>
+        <td>37.7721199,-122.43956740000002</td>
+      </tr>
+      <tr>
+        <td>131</td>
+        <td>Condo/Co-op</td>
+        <td>750 Lake St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>1895000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Lakeshore</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.786716</td>
+        <td>-122.467725</td>
+        <td>NaN</td>
+        <td>37.7867156,-122.46772460000001</td>
+      </tr>
+      <tr>
+        <td>132</td>
+        <td>Single Family Residential</td>
+        <td>137 Ashton Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>1595000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Oceanview/Merced/Ingleside</td>
+        <td>1605.0</td>
+        <td>994.0</td>
+        <td>NaN</td>
+        <td>37.720716</td>
+        <td>-122.462447</td>
+        <td>1924.0</td>
+        <td>37.7207164,-122.46244750000001</td>
+      </tr>
+      <tr>
+        <td>133</td>
+        <td>Condo/Co-op</td>
+        <td>1832 Page St #2</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>995000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Haight Ashbury</td>
+        <td>990.0</td>
+        <td>1005.0</td>
+        <td>409.0</td>
+        <td>37.770672</td>
+        <td>-122.451070</td>
+        <td>1900.0</td>
+        <td>37.7706724,-122.4510696</td>
+      </tr>
+      <tr>
+        <td>134</td>
+        <td>Condo/Co-op</td>
+        <td>3395 Market St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>825000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Castro/Upper Market</td>
+        <td>742.0</td>
+        <td>1112.0</td>
+        <td>396.0</td>
+        <td>37.757994</td>
+        <td>-122.443083</td>
+        <td>1906.0</td>
+        <td>37.7579936,-122.44308259999998</td>
+      </tr>
+      <tr>
+        <td>135</td>
+        <td>Single Family Residential</td>
+        <td>1089 Clayton St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>2190000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Haight Ashbury</td>
+        <td>1615.0</td>
+        <td>1356.0</td>
+        <td>NaN</td>
+        <td>37.762795</td>
+        <td>-122.447188</td>
+        <td>1941.0</td>
+        <td>37.76279470000001,-122.4471883</td>
+      </tr>
+      <tr>
+        <td>136</td>
+        <td>Condo/Co-op</td>
+        <td>1 Hawthorne St Unit 6J</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1395000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1247.0</td>
+        <td>1119.0</td>
+        <td>1269.0</td>
+        <td>37.785736</td>
+        <td>-122.398952</td>
+        <td>2010.0</td>
+        <td>37.7857356,-122.39895209999999</td>
+      </tr>
+      <tr>
+        <td>137</td>
+        <td>Single Family Residential</td>
+        <td>326 Brunswick St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>1498000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Outer Mission</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.711259</td>
+        <td>-122.441648</td>
+        <td>1942.0</td>
+        <td>37.7112595,-122.4416479</td>
+      </tr>
+      <tr>
+        <td>139</td>
+        <td>Condo/Co-op</td>
+        <td>471 Jersey St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1779000</td>
+        <td>3.0</td>
+        <td>1.50</td>
+        <td>Noe Valley</td>
+        <td>1555.0</td>
+        <td>1144.0</td>
+        <td>400.0</td>
+        <td>37.750156</td>
+        <td>-122.435556</td>
+        <td>1923.0</td>
+        <td>37.7501559,-122.435556</td>
+      </tr>
+      <tr>
+        <td>140</td>
+        <td>Townhouse</td>
+        <td>1736 A 20th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>1450000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Sunset/Parkside</td>
+        <td>2225.0</td>
+        <td>652.0</td>
+        <td>270.0</td>
+        <td>37.755423</td>
+        <td>-122.477333</td>
+        <td>2001.0</td>
+        <td>37.755423,-122.477333</td>
+      </tr>
+      <tr>
+        <td>141</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>243-245 Corbett Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1998000</td>
+        <td>4.0</td>
+        <td>4.00</td>
+        <td>Twin Peaks</td>
+        <td>2868.0</td>
+        <td>697.0</td>
+        <td>NaN</td>
+        <td>37.761233</td>
+        <td>-122.443642</td>
+        <td>1975.0</td>
+        <td>37.761233399999995,-122.4436419</td>
+      </tr>
+      <tr>
+        <td>142</td>
+        <td>Condo/Co-op</td>
+        <td>2049 Ellis St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94115</td>
+        <td>1595000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Western Addition</td>
+        <td>2001.0</td>
+        <td>797.0</td>
+        <td>305.0</td>
+        <td>37.781133</td>
+        <td>-122.439895</td>
+        <td>1902.0</td>
+        <td>37.781132899999996,-122.43989499999999</td>
+      </tr>
+      <tr>
+        <td>143</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>5139-5141 Geary Blvd</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>1995000</td>
+        <td>4.0</td>
+        <td>4.50</td>
+        <td>Outer Richmond</td>
+        <td>3180.0</td>
+        <td>627.0</td>
+        <td>NaN</td>
+        <td>37.780273</td>
+        <td>-122.474699</td>
+        <td>1921.0</td>
+        <td>37.7802735,-122.47469879999998</td>
+      </tr>
+      <tr>
+        <td>144</td>
+        <td>Single Family Residential</td>
+        <td>27 Starview Way</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1395000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Twin Peaks</td>
+        <td>1062.0</td>
+        <td>1314.0</td>
+        <td>NaN</td>
+        <td>37.750001</td>
+        <td>-122.451744</td>
+        <td>1956.0</td>
+        <td>37.75000120000001,-122.45174420000001</td>
+      </tr>
+      <tr>
+        <td>145</td>
+        <td>Condo/Co-op</td>
+        <td>446 Collingwood St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1995000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Castro/Upper Market</td>
+        <td>1570.0</td>
+        <td>1271.0</td>
+        <td>117.0</td>
+        <td>37.755240</td>
+        <td>-122.435900</td>
+        <td>1968.0</td>
+        <td>37.7552395,-122.4358996</td>
+      </tr>
+      <tr>
+        <td>146</td>
+        <td>Single Family Residential</td>
+        <td>1374 46th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>1098000</td>
+        <td>8.0</td>
+        <td>3.00</td>
+        <td>Sunset/Parkside</td>
+        <td>2204.0</td>
+        <td>498.0</td>
+        <td>NaN</td>
+        <td>37.760927</td>
+        <td>-122.505750</td>
+        <td>1915.0</td>
+        <td>37.7609266,-122.5057497</td>
+      </tr>
+      <tr>
+        <td>147</td>
+        <td>Single Family Residential</td>
+        <td>649 28th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1700000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Noe Valley</td>
+        <td>1138.0</td>
+        <td>1494.0</td>
+        <td>NaN</td>
+        <td>37.744532</td>
+        <td>-122.436765</td>
+        <td>1941.0</td>
+        <td>37.7445324,-122.4367649</td>
+      </tr>
+      <tr>
+        <td>148</td>
+        <td>Condo/Co-op</td>
+        <td>1177 California St #1703</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94108</td>
+        <td>638000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Nob Hill</td>
+        <td>411.0</td>
+        <td>1552.0</td>
+        <td>932.0</td>
+        <td>37.791026</td>
+        <td>-122.413648</td>
+        <td>1978.0</td>
+        <td>37.791026200000005,-122.4136476</td>
+      </tr>
+      <tr>
+        <td>149</td>
+        <td>Condo/Co-op</td>
+        <td>1000 3rd St #303</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94158</td>
+        <td>1825000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Mission Bay</td>
+        <td>1234.0</td>
+        <td>1479.0</td>
+        <td>928.0</td>
+        <td>37.775213</td>
+        <td>-122.390228</td>
+        <td>2018.0</td>
+        <td>37.7752125,-122.39022759999999</td>
+      </tr>
+      <tr>
+        <td>150</td>
+        <td>Single Family Residential</td>
+        <td>133 Cresta Vista Dr</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>1898000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>West of Twin Peaks</td>
+        <td>2400.0</td>
+        <td>791.0</td>
+        <td>NaN</td>
+        <td>37.735655</td>
+        <td>-122.456742</td>
+        <td>1988.0</td>
+        <td>37.735655,-122.45674220000001</td>
+      </tr>
+      <tr>
+        <td>151</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>337-339 Monterey Blvd</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1595000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Oceanview/Merced/Ingleside</td>
+        <td>2602.0</td>
+        <td>613.0</td>
+        <td>NaN</td>
+        <td>37.731275</td>
+        <td>-122.442943</td>
+        <td>2016.0</td>
+        <td>37.7312751,-122.44294350000001</td>
+      </tr>
+      <tr>
+        <td>152</td>
+        <td>Townhouse</td>
+        <td>1338 Filbert St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>3998000</td>
+        <td>3.0</td>
+        <td>3.50</td>
+        <td>Russian Hill</td>
+        <td>2751.0</td>
+        <td>1453.0</td>
+        <td>985.0</td>
+        <td>37.800098</td>
+        <td>-122.421539</td>
+        <td>1906.0</td>
+        <td>37.800098,-122.42153859999999</td>
+      </tr>
+      <tr>
+        <td>153</td>
+        <td>Condo/Co-op</td>
+        <td>11 High St #203</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1398000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Noe Valley</td>
+        <td>1208.0</td>
+        <td>1157.0</td>
+        <td>450.0</td>
+        <td>37.748822</td>
+        <td>-122.443201</td>
+        <td>1980.0</td>
+        <td>37.7488223,-122.44320049999999</td>
+      </tr>
+      <tr>
+        <td>154</td>
+        <td>Single Family Residential</td>
+        <td>579 Moscow St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>1285000</td>
+        <td>5.0</td>
+        <td>3.00</td>
+        <td>Excelsior</td>
+        <td>2090.0</td>
+        <td>615.0</td>
+        <td>NaN</td>
+        <td>37.718395</td>
+        <td>-122.429527</td>
+        <td>NaN</td>
+        <td>37.7183955,-122.42952679999999</td>
+      </tr>
+      <tr>
+        <td>155</td>
+        <td>Multi-Family (5+ Unit)</td>
+        <td>4740 Balboa St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94121</td>
+        <td>11000000</td>
+        <td>6.0</td>
+        <td>NaN</td>
+        <td>Outer Richmond</td>
+        <td>15659.0</td>
+        <td>702.0</td>
+        <td>NaN</td>
+        <td>37.775393</td>
+        <td>-122.509784</td>
+        <td>1928.0</td>
+        <td>37.775393,-122.50978400000001</td>
+      </tr>
+      <tr>
+        <td>156</td>
+        <td>Condo/Co-op</td>
+        <td>445 Francisco St Unit F601</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94133</td>
+        <td>2198000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>North Beach</td>
+        <td>1311.0</td>
+        <td>1677.0</td>
+        <td>NaN</td>
+        <td>37.804667</td>
+        <td>-122.412629</td>
+        <td>2001.0</td>
+        <td>37.8046669,-122.4126295</td>
+      </tr>
+      <tr>
+        <td>157</td>
+        <td>Multi-Family (5+ Unit)</td>
+        <td>3830 19th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>2800000</td>
+        <td>6.0</td>
+        <td>NaN</td>
+        <td>Castro/Upper Market</td>
+        <td>4740.0</td>
+        <td>591.0</td>
+        <td>NaN</td>
+        <td>37.759863</td>
+        <td>-122.429073</td>
+        <td>1913.0</td>
+        <td>37.7598626,-122.4290725</td>
+      </tr>
+      <tr>
+        <td>158</td>
+        <td>Condo/Co-op</td>
+        <td>1244 12th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>1275000</td>
+        <td>3.0</td>
+        <td>1.50</td>
+        <td>Inner Sunset</td>
+        <td>1249.0</td>
+        <td>1021.0</td>
+        <td>200.0</td>
+        <td>37.764948</td>
+        <td>-122.469266</td>
+        <td>1905.0</td>
+        <td>37.764947899999996,-122.46926599999999</td>
+      </tr>
+      <tr>
+        <td>159</td>
+        <td>Single Family Residential</td>
+        <td>198 Bradford St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1498000</td>
+        <td>4.0</td>
+        <td>2.00</td>
+        <td>Bernal Heights</td>
+        <td>1940.0</td>
+        <td>772.0</td>
+        <td>NaN</td>
+        <td>37.739887</td>
+        <td>-122.409838</td>
+        <td>NaN</td>
+        <td>37.739886600000006,-122.4098379</td>
+      </tr>
+      <tr>
+        <td>160</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>635-637 Baker St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>2775000</td>
+        <td>8.0</td>
+        <td>5.00</td>
+        <td>Western Addition</td>
+        <td>4200.0</td>
+        <td>661.0</td>
+        <td>NaN</td>
+        <td>37.777034</td>
+        <td>-122.441954</td>
+        <td>1900.0</td>
+        <td>37.7770339,-122.4419544</td>
+      </tr>
+      <tr>
+        <td>162</td>
+        <td>Condo/Co-op</td>
+        <td>333 Beale St Unit 4C</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1228000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>South of Market</td>
+        <td>916.0</td>
+        <td>1341.0</td>
+        <td>1134.0</td>
+        <td>37.788494</td>
+        <td>-122.391880</td>
+        <td>2015.0</td>
+        <td>37.788493700000004,-122.3918797</td>
+      </tr>
+      <tr>
+        <td>163</td>
+        <td>Single Family Residential</td>
+        <td>240 Chenery St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>4500000</td>
+        <td>4.0</td>
+        <td>4.50</td>
+        <td>Glen Park</td>
+        <td>3650.0</td>
+        <td>1233.0</td>
+        <td>NaN</td>
+        <td>37.738416</td>
+        <td>-122.426706</td>
+        <td>1908.0</td>
+        <td>37.7384164,-122.4267064</td>
+      </tr>
+      <tr>
+        <td>164</td>
+        <td>Condo/Co-op</td>
+        <td>1755 Jackson St #406</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>2250000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Pacific Heights</td>
+        <td>1906.0</td>
+        <td>1180.0</td>
+        <td>750.0</td>
+        <td>37.793538</td>
+        <td>-122.424002</td>
+        <td>1923.0</td>
+        <td>37.793537799999996,-122.4240021</td>
+      </tr>
+      <tr>
+        <td>165</td>
+        <td>Multi-Family (5+ Unit)</td>
+        <td>402 Duboce Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>6350000</td>
+        <td>17.0</td>
+        <td>NaN</td>
+        <td>Castro/Upper Market</td>
+        <td>9399.0</td>
+        <td>676.0</td>
+        <td>NaN</td>
+        <td>37.769595</td>
+        <td>-122.430156</td>
+        <td>1908.0</td>
+        <td>37.769595100000004,-122.43015559999999</td>
+      </tr>
+      <tr>
+        <td>166</td>
+        <td>Condo/Co-op</td>
+        <td>81 Lansing St #410</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>949000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>855.0</td>
+        <td>1110.0</td>
+        <td>743.0</td>
+        <td>37.785639</td>
+        <td>-122.394007</td>
+        <td>1995.0</td>
+        <td>37.785639200000006,-122.39400659999998</td>
+      </tr>
+      <tr>
+        <td>167</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>729-733 Vallejo St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94133</td>
+        <td>1299000</td>
+        <td>6.0</td>
+        <td>2.00</td>
+        <td>North Beach</td>
+        <td>3660.0</td>
+        <td>355.0</td>
+        <td>NaN</td>
+        <td>37.798320</td>
+        <td>-122.409318</td>
+        <td>1906.0</td>
+        <td>37.79831970000001,-122.40931840000002</td>
+      </tr>
+      <tr>
+        <td>168</td>
+        <td>Townhouse</td>
+        <td>2001 McAllister St #254</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>1450000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>Western Addition</td>
+        <td>1407.0</td>
+        <td>1031.0</td>
+        <td>931.0</td>
+        <td>37.776381</td>
+        <td>-122.445690</td>
+        <td>2002.0</td>
+        <td>37.7763812,-122.4456902</td>
+      </tr>
+      <tr>
+        <td>169</td>
+        <td>Single Family Residential</td>
+        <td>4073-4075 17th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>2795000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Twin Peaks</td>
+        <td>2336.0</td>
+        <td>1196.0</td>
+        <td>NaN</td>
+        <td>37.762287</td>
+        <td>-122.436706</td>
+        <td>1907.0</td>
+        <td>37.7622875,-122.43670549999999</td>
+      </tr>
+      <tr>
+        <td>170</td>
+        <td>Single Family Residential</td>
+        <td>3020 Scott St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>3980000</td>
+        <td>3.0</td>
+        <td>3.50</td>
+        <td>Pacific Heights</td>
+        <td>2400.0</td>
+        <td>1658.0</td>
+        <td>NaN</td>
+        <td>37.798039</td>
+        <td>-122.440564</td>
+        <td>1900.0</td>
+        <td>37.7980388,-122.4405642</td>
+      </tr>
+      <tr>
+        <td>171</td>
+        <td>Condo/Co-op</td>
+        <td>338 Main St Unit 35D</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1498000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>963.0</td>
+        <td>1556.0</td>
+        <td>1143.0</td>
+        <td>37.788673</td>
+        <td>-122.391418</td>
+        <td>2016.0</td>
+        <td>37.78867329999999,-122.39141780000001</td>
+      </tr>
+      <tr>
+        <td>172</td>
+        <td>Multi-Family (5+ Unit)</td>
+        <td>674-678 Haight St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>3100000</td>
+        <td>9.0</td>
+        <td>NaN</td>
+        <td>Hayes Valley</td>
+        <td>5655.0</td>
+        <td>548.0</td>
+        <td>NaN</td>
+        <td>37.771984</td>
+        <td>-122.433367</td>
+        <td>1890.0</td>
+        <td>37.7719836,-122.43336670000001</td>
+      </tr>
+      <tr>
+        <td>173</td>
+        <td>Condo/Co-op</td>
+        <td>2200 Sacramento St #1305</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94115</td>
+        <td>2050000</td>
+        <td>1.0</td>
+        <td>2.00</td>
+        <td>Pacific Heights</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>682.0</td>
+        <td>37.790681</td>
+        <td>-122.429498</td>
+        <td>1964.0</td>
+        <td>37.790681400000004,-122.42949840000001</td>
+      </tr>
+      <tr>
+        <td>174</td>
+        <td>Condo/Co-op</td>
+        <td>1333 Jones St #1609</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>1250000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Nob Hill</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>1185.0</td>
+        <td>37.793621</td>
+        <td>-122.414882</td>
+        <td>1961.0</td>
+        <td>37.793621,-122.41488229999999</td>
+      </tr>
+      <tr>
+        <td>175</td>
+        <td>Condo/Co-op</td>
+        <td>2946 Pierce</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>4250000</td>
+        <td>3.0</td>
+        <td>3.50</td>
+        <td>Pacific Heights</td>
+        <td>2798.0</td>
+        <td>1519.0</td>
+        <td>300.0</td>
+        <td>37.797331</td>
+        <td>-122.438648</td>
+        <td>NaN</td>
+        <td>37.797331,-122.438648</td>
+      </tr>
+      <tr>
+        <td>176</td>
+        <td>Single Family Residential</td>
+        <td>867 27th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94121</td>
+        <td>799950</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Outer Richmond</td>
+        <td>1666.0</td>
+        <td>480.0</td>
+        <td>NaN</td>
+        <td>37.773070</td>
+        <td>-122.486681</td>
+        <td>1931.0</td>
+        <td>37.7730701,-122.48668090000001</td>
+      </tr>
+      <tr>
+        <td>177</td>
+        <td>Single Family Residential</td>
+        <td>366 Quintara St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94116</td>
+        <td>1325000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Sunset/Parkside</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.749079</td>
+        <td>-122.469579</td>
+        <td>1949.0</td>
+        <td>37.7490791,-122.4695788</td>
+      </tr>
+      <tr>
+        <td>178</td>
+        <td>Single Family Residential</td>
+        <td>311 Amber Dr</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>2350000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Twin Peaks</td>
+        <td>1648.0</td>
+        <td>1426.0</td>
+        <td>NaN</td>
+        <td>37.744537</td>
+        <td>-122.442278</td>
+        <td>1963.0</td>
+        <td>37.7445366,-122.44227839999999</td>
+      </tr>
+      <tr>
+        <td>179</td>
+        <td>Condo/Co-op</td>
+        <td>1177 California St #623</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94108</td>
+        <td>725000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Nob Hill</td>
+        <td>706.0</td>
+        <td>1027.0</td>
+        <td>1139.0</td>
+        <td>37.791026</td>
+        <td>-122.413648</td>
+        <td>1978.0</td>
+        <td>37.791026200000005,-122.4136476</td>
+      </tr>
+      <tr>
+        <td>182</td>
+        <td>Single Family Residential</td>
+        <td>63 Carmel St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>3650000</td>
+        <td>4.0</td>
+        <td>4.50</td>
+        <td>Lone Mountain/USF</td>
+        <td>4588.0</td>
+        <td>796.0</td>
+        <td>NaN</td>
+        <td>37.760709</td>
+        <td>-122.448047</td>
+        <td>1922.0</td>
+        <td>37.7607091,-122.44804679999999</td>
+      </tr>
+      <tr>
+        <td>183</td>
+        <td>Single Family Residential</td>
+        <td>930 Naples St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>1250000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Excelsior</td>
+        <td>1540.0</td>
+        <td>812.0</td>
+        <td>NaN</td>
+        <td>37.715078</td>
+        <td>-122.435899</td>
+        <td>1921.0</td>
+        <td>37.715078000000005,-122.43589899999999</td>
+      </tr>
+      <tr>
+        <td>184</td>
+        <td>Condo/Co-op</td>
+        <td>965 Folsom St #202</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1100000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>South of Market</td>
+        <td>1547.0</td>
+        <td>711.0</td>
+        <td>705.0</td>
+        <td>37.779001</td>
+        <td>-122.404485</td>
+        <td>2000.0</td>
+        <td>37.7790012,-122.40448500000001</td>
+      </tr>
+      <tr>
+        <td>185</td>
+        <td>Condo/Co-op</td>
+        <td>222 Eureka St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1495000</td>
+        <td>2.0</td>
+        <td>1.50</td>
+        <td>Castro/Upper Market</td>
+        <td>1365.0</td>
+        <td>1095.0</td>
+        <td>375.0</td>
+        <td>37.758628</td>
+        <td>-122.438388</td>
+        <td>1902.0</td>
+        <td>37.758628,-122.43838799999999</td>
+      </tr>
+      <tr>
+        <td>186</td>
+        <td>Condo/Co-op</td>
+        <td>4397 25th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1399000</td>
+        <td>3.0</td>
+        <td>1.00</td>
+        <td>Noe Valley</td>
+        <td>1339.0</td>
+        <td>1045.0</td>
+        <td>430.0</td>
+        <td>37.749249</td>
+        <td>-122.438150</td>
+        <td>1908.0</td>
+        <td>37.749249,-122.43815</td>
+      </tr>
+      <tr>
+        <td>187</td>
+        <td>Condo/Co-op</td>
+        <td>280 Spear St Unit 4U</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>945000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>671.0</td>
+        <td>1408.0</td>
+        <td>1078.0</td>
+        <td>37.790374</td>
+        <td>-122.391381</td>
+        <td>2020.0</td>
+        <td>37.7903739,-122.3913812</td>
+      </tr>
+      <tr>
+        <td>188</td>
+        <td>Single Family Residential</td>
+        <td>663 Marina Blvd</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>9250000</td>
+        <td>6.0</td>
+        <td>6.50</td>
+        <td>Marina</td>
+        <td>5420.0</td>
+        <td>1707.0</td>
+        <td>NaN</td>
+        <td>37.805217</td>
+        <td>-122.444784</td>
+        <td>1937.0</td>
+        <td>37.8052169,-122.4447837</td>
+      </tr>
+      <tr>
+        <td>189</td>
+        <td>Single Family Residential</td>
+        <td>1401 Shafter Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94124</td>
+        <td>980000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Bayview Hunters Point</td>
+        <td>1412.0</td>
+        <td>694.0</td>
+        <td>NaN</td>
+        <td>37.728827</td>
+        <td>-122.387269</td>
+        <td>1929.0</td>
+        <td>37.7288266,-122.3872686</td>
+      </tr>
+      <tr>
+        <td>190</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>1061-1065 Oak St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>2500000</td>
+        <td>4.0</td>
+        <td>2.00</td>
+        <td>Hayes Valley</td>
+        <td>3418.0</td>
+        <td>731.0</td>
+        <td>NaN</td>
+        <td>37.772929</td>
+        <td>-122.436729</td>
+        <td>1900.0</td>
+        <td>37.772929100000006,-122.4367287</td>
+      </tr>
+      <tr>
+        <td>192</td>
+        <td>Condo/Co-op</td>
+        <td>388 Fulton St #310</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94102</td>
+        <td>310798</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Hayes Valley</td>
+        <td>347.0</td>
+        <td>896.0</td>
+        <td>445.0</td>
+        <td>37.779041</td>
+        <td>-122.423110</td>
+        <td>2016.0</td>
+        <td>37.7790409,-122.4231102</td>
+      </tr>
+      <tr>
+        <td>193</td>
+        <td>Condo/Co-op</td>
+        <td>301 Mission St Unit 3H</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>754000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>773.0</td>
+        <td>975.0</td>
+        <td>1531.0</td>
+        <td>37.790382</td>
+        <td>-122.396153</td>
+        <td>2009.0</td>
+        <td>37.7903824,-122.39615309999999</td>
+      </tr>
+      <tr>
+        <td>194</td>
+        <td>Condo/Co-op</td>
+        <td>4475 24th St #4</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1750000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Noe Valley</td>
+        <td>1654.0</td>
+        <td>1058.0</td>
+        <td>308.0</td>
+        <td>37.750616</td>
+        <td>-122.442268</td>
+        <td>1979.0</td>
+        <td>37.7506157,-122.4422679</td>
+      </tr>
+      <tr>
+        <td>196</td>
+        <td>Condo/Co-op</td>
+        <td>461 2nd St Unit C135</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1189000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>1317.0</td>
+        <td>903.0</td>
+        <td>709.0</td>
+        <td>37.783447</td>
+        <td>-122.393648</td>
+        <td>1907.0</td>
+        <td>37.7834473,-122.3936481</td>
+      </tr>
+      <tr>
+        <td>197</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>1642-1644 Waller St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>1995000</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>Haight Ashbury</td>
+        <td>2713.0</td>
+        <td>735.0</td>
+        <td>NaN</td>
+        <td>37.768721</td>
+        <td>-122.451359</td>
+        <td>1904.0</td>
+        <td>37.7687206,-122.45135859999999</td>
+      </tr>
+      <tr>
+        <td>198</td>
+        <td>Condo/Co-op</td>
+        <td>2468 Bush Unit A</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94115</td>
+        <td>698000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Pacific Heights</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>188.0</td>
+        <td>37.786645</td>
+        <td>-122.437899</td>
+        <td>1900.0</td>
+        <td>37.786645,-122.43789850000002</td>
+      </tr>
+      <tr>
+        <td>199</td>
+        <td>Condo/Co-op</td>
+        <td>1333 Jones St #1102</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>2199000</td>
+        <td>1.0</td>
+        <td>2.00</td>
+        <td>Nob Hill</td>
+        <td>1590.0</td>
+        <td>1383.0</td>
+        <td>1592.0</td>
+        <td>37.793621</td>
+        <td>-122.414882</td>
+        <td>1960.0</td>
+        <td>37.793621,-122.41488229999999</td>
+      </tr>
+      <tr>
+        <td>200</td>
+        <td>Single Family Residential</td>
+        <td>1759 8th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>1325000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Inner Sunset</td>
+        <td>1760.0</td>
+        <td>753.0</td>
+        <td>NaN</td>
+        <td>37.755515</td>
+        <td>-122.464973</td>
+        <td>1925.0</td>
+        <td>37.755515,-122.464973</td>
+      </tr>
+      <tr>
+        <td>202</td>
+        <td>Condo/Co-op</td>
+        <td>3714 23rd St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1525000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Noe Valley</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>223.0</td>
+        <td>37.753561</td>
+        <td>-122.425778</td>
+        <td>1900.0</td>
+        <td>37.753561,-122.42577790000001</td>
+      </tr>
+      <tr>
+        <td>203</td>
+        <td>Condo/Co-op</td>
+        <td>199 Tiffany Ave #210</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1249000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Bernal Heights</td>
+        <td>1171.0</td>
+        <td>1067.0</td>
+        <td>731.0</td>
+        <td>37.744274</td>
+        <td>-122.421344</td>
+        <td>2004.0</td>
+        <td>37.744274,-122.4213436</td>
+      </tr>
+      <tr>
+        <td>205</td>
+        <td>Single Family Residential</td>
+        <td>1246 47th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>650000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Sunset/Parkside</td>
+        <td>550.0</td>
+        <td>1182.0</td>
+        <td>NaN</td>
+        <td>37.763296</td>
+        <td>-122.506781</td>
+        <td>1923.0</td>
+        <td>37.763296399999994,-122.50678070000001</td>
+      </tr>
+      <tr>
+        <td>206</td>
+        <td>Condo/Co-op</td>
+        <td>201 Folsom St Unit 6G</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1795000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1401.0</td>
+        <td>1281.0</td>
+        <td>1216.0</td>
+        <td>37.788706</td>
+        <td>-122.392239</td>
+        <td>2016.0</td>
+        <td>37.788705900000004,-122.3922385</td>
+      </tr>
+      <tr>
+        <td>207</td>
+        <td>Single Family Residential</td>
+        <td>1244 47th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>1088888</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Sunset/Parkside</td>
+        <td>1056.0</td>
+        <td>1031.0</td>
+        <td>NaN</td>
+        <td>37.763290</td>
+        <td>-122.507014</td>
+        <td>1923.0</td>
+        <td>37.7632902,-122.50701370000002</td>
+      </tr>
+      <tr>
+        <td>209</td>
+        <td>Single Family Residential</td>
+        <td>1324 Rhode Island St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>4075000</td>
+        <td>4.0</td>
+        <td>4.00</td>
+        <td>Potrero Hill</td>
+        <td>3605.0</td>
+        <td>1130.0</td>
+        <td>NaN</td>
+        <td>37.752905</td>
+        <td>-122.401618</td>
+        <td>1913.0</td>
+        <td>37.7529052,-122.40161840000002</td>
+      </tr>
+      <tr>
+        <td>210</td>
+        <td>Condo/Co-op</td>
+        <td>1635 California St #24</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>1099000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Nob Hill</td>
+        <td>915.0</td>
+        <td>1201.0</td>
+        <td>639.0</td>
+        <td>37.790183</td>
+        <td>-122.421346</td>
+        <td>2005.0</td>
+        <td>37.790183299999995,-122.4213456</td>
+      </tr>
+      <tr>
+        <td>211</td>
+        <td>Condo/Co-op</td>
+        <td>601 4th St #302</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>965000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>1026.0</td>
+        <td>941.0</td>
+        <td>576.0</td>
+        <td>37.778163</td>
+        <td>-122.395778</td>
+        <td>1918.0</td>
+        <td>37.7781631,-122.39577779999999</td>
+      </tr>
+      <tr>
+        <td>212</td>
+        <td>Condo/Co-op</td>
+        <td>1188 Valencia St #210</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>889000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Mission</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>484.0</td>
+        <td>37.753920</td>
+        <td>-122.421016</td>
+        <td>2018.0</td>
+        <td>37.75392,-122.42101640000001</td>
+      </tr>
+      <tr>
+        <td>213</td>
+        <td>Single Family Residential</td>
+        <td>661 Rockdale Dr</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>1325000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Glen Park</td>
+        <td>1150.0</td>
+        <td>1152.0</td>
+        <td>NaN</td>
+        <td>37.740881</td>
+        <td>-122.450771</td>
+        <td>1930.0</td>
+        <td>37.740881200000004,-122.45077109999998</td>
+      </tr>
+      <tr>
+        <td>214</td>
+        <td>Condo/Co-op</td>
+        <td>53 Wilder St #403</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1295000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Glen Park</td>
+        <td>1231.0</td>
+        <td>1052.0</td>
+        <td>688.0</td>
+        <td>37.733980</td>
+        <td>-122.433626</td>
+        <td>2006.0</td>
+        <td>37.7339803,-122.4336263</td>
+      </tr>
+      <tr>
+        <td>216</td>
+        <td>Condo/Co-op</td>
+        <td>301 Mission St Unit 33E</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1995000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1714.0</td>
+        <td>1164.0</td>
+        <td>2670.0</td>
+        <td>37.790382</td>
+        <td>-122.396153</td>
+        <td>2009.0</td>
+        <td>37.7903824,-122.39615309999999</td>
+      </tr>
+      <tr>
+        <td>217</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>2920 Gough St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>3500000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Pacific Heights</td>
+        <td>3700.0</td>
+        <td>946.0</td>
+        <td>NaN</td>
+        <td>37.800367</td>
+        <td>-122.427424</td>
+        <td>1937.0</td>
+        <td>37.8003671,-122.4274242</td>
+      </tr>
+      <tr>
+        <td>218</td>
+        <td>Single Family Residential</td>
+        <td>4412 17th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>2350000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Twin Peaks</td>
+        <td>2073.0</td>
+        <td>1134.0</td>
+        <td>NaN</td>
+        <td>37.762178</td>
+        <td>-122.443736</td>
+        <td>1907.0</td>
+        <td>37.762178000000006,-122.44373600000002</td>
+      </tr>
+      <tr>
+        <td>219</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>1736-1738 Fell St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>3495000</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>Western Addition</td>
+        <td>6825.0</td>
+        <td>512.0</td>
+        <td>NaN</td>
+        <td>37.773192</td>
+        <td>-122.446702</td>
+        <td>1900.0</td>
+        <td>37.7731919,-122.44670190000001</td>
+      </tr>
+      <tr>
+        <td>220</td>
+        <td>Condo/Co-op</td>
+        <td>158 Laidley St #3</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>895000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Glen Park</td>
+        <td>660.0</td>
+        <td>1356.0</td>
+        <td>268.0</td>
+        <td>37.739201</td>
+        <td>-122.428957</td>
+        <td>1960.0</td>
+        <td>37.7392008,-122.42895690000002</td>
+      </tr>
+      <tr>
+        <td>221</td>
+        <td>Condo/Co-op</td>
+        <td>1000 Pennsylvania Ave #12</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1295000</td>
+        <td>2.0</td>
+        <td>3.00</td>
+        <td>Potrero Hill</td>
+        <td>1727.0</td>
+        <td>750.0</td>
+        <td>769.0</td>
+        <td>37.753903</td>
+        <td>-122.393098</td>
+        <td>2001.0</td>
+        <td>37.7539025,-122.3930979</td>
+      </tr>
+      <tr>
+        <td>222</td>
+        <td>Single Family Residential</td>
+        <td>2576 26th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94116</td>
+        <td>1128000</td>
+        <td>4.0</td>
+        <td>1.25</td>
+        <td>Sunset/Parkside</td>
+        <td>2037.0</td>
+        <td>554.0</td>
+        <td>NaN</td>
+        <td>37.739462</td>
+        <td>-122.482701</td>
+        <td>1931.0</td>
+        <td>37.7394617,-122.4827013</td>
+      </tr>
+      <tr>
+        <td>225</td>
+        <td>Single Family Residential</td>
+        <td>86 Fair Oaks St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>2095000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Castro/Upper Market</td>
+        <td>1740.0</td>
+        <td>1204.0</td>
+        <td>NaN</td>
+        <td>37.755404</td>
+        <td>-122.424594</td>
+        <td>1908.0</td>
+        <td>37.755403799999996,-122.42459380000001</td>
+      </tr>
+      <tr>
+        <td>226</td>
+        <td>Condo/Co-op</td>
+        <td>765 Market St Ph 2CD</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>11000000</td>
+        <td>3.0</td>
+        <td>3.50</td>
+        <td>South of Market</td>
+        <td>3548.0</td>
+        <td>3100.0</td>
+        <td>5068.0</td>
+        <td>37.786097</td>
+        <td>-122.404163</td>
+        <td>2001.0</td>
+        <td>37.786097,-122.40416289999999</td>
+      </tr>
+      <tr>
+        <td>227</td>
+        <td>Condo/Co-op</td>
+        <td>3418 26th St #11</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>719000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Mission</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>570.0</td>
+        <td>37.749202</td>
+        <td>-122.418984</td>
+        <td>2014.0</td>
+        <td>37.7492018,-122.41898379999999</td>
+      </tr>
+      <tr>
+        <td>228</td>
+        <td>Single Family Residential</td>
+        <td>1407 Shafter Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94124</td>
+        <td>950000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Bayview Hunters Point</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.728875</td>
+        <td>-122.387324</td>
+        <td>1920.0</td>
+        <td>37.7288748,-122.38732399999999</td>
+      </tr>
+      <tr>
+        <td>229</td>
+        <td>Condo/Co-op</td>
+        <td>339 Presidio Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94115</td>
+        <td>1825000</td>
+        <td>3.0</td>
+        <td>1.00</td>
+        <td>Presidio Heights</td>
+        <td>1553.0</td>
+        <td>1175.0</td>
+        <td>104.0</td>
+        <td>37.788510</td>
+        <td>-122.447168</td>
+        <td>1924.0</td>
+        <td>37.788509600000005,-122.44716799999999</td>
+      </tr>
+      <tr>
+        <td>230</td>
+        <td>Condo/Co-op</td>
+        <td>875 Vermont St #105</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>699000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Potrero Hill</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>184.0</td>
+        <td>37.758573</td>
+        <td>-122.403654</td>
+        <td>NaN</td>
+        <td>37.7585731,-122.403654</td>
+      </tr>
+      <tr>
+        <td>231</td>
+        <td>Condo/Co-op</td>
+        <td>756 Lake St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>1750000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Lakeshore</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.786715</td>
+        <td>-122.467750</td>
+        <td>NaN</td>
+        <td>37.7867145,-122.46775</td>
+      </tr>
+      <tr>
+        <td>233</td>
+        <td>Condo/Co-op</td>
+        <td>333 Beale St Unit 8A</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>998000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>873.0</td>
+        <td>1143.0</td>
+        <td>985.0</td>
+        <td>37.788494</td>
+        <td>-122.391880</td>
+        <td>2015.0</td>
+        <td>37.788493700000004,-122.3918797</td>
+      </tr>
+      <tr>
+        <td>234</td>
+        <td>Single Family Residential</td>
+        <td>152 Fairmount St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>2195000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Glen Park</td>
+        <td>1716.0</td>
+        <td>1279.0</td>
+        <td>NaN</td>
+        <td>37.738994</td>
+        <td>-122.426678</td>
+        <td>NaN</td>
+        <td>37.738994299999995,-122.4266784</td>
+      </tr>
+      <tr>
+        <td>235</td>
+        <td>Condo/Co-op</td>
+        <td>81 Frank Norris St #304</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>525000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Financial District/South Beach</td>
+        <td>632.0</td>
+        <td>831.0</td>
+        <td>462.0</td>
+        <td>37.789080</td>
+        <td>-122.420053</td>
+        <td>2007.0</td>
+        <td>37.7890804,-122.4200528</td>
+      </tr>
+      <tr>
+        <td>237</td>
+        <td>Condo/Co-op</td>
+        <td>56 Danvers St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>2000000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Castro/Upper Market</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>300.0</td>
+        <td>37.760632</td>
+        <td>-122.443808</td>
+        <td>NaN</td>
+        <td>37.7606318,-122.44380770000001</td>
+      </tr>
+      <tr>
+        <td>238</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>148-152 Fillmore St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>3250000</td>
+        <td>7.0</td>
+        <td>5.00</td>
+        <td>Hayes Valley</td>
+        <td>3801.0</td>
+        <td>855.0</td>
+        <td>NaN</td>
+        <td>37.771017</td>
+        <td>-122.429966</td>
+        <td>1900.0</td>
+        <td>37.7710169,-122.42996640000001</td>
+      </tr>
+      <tr>
+        <td>239</td>
+        <td>Single Family Residential</td>
+        <td>1045 Cole St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>3995000</td>
+        <td>4.0</td>
+        <td>3.50</td>
+        <td>Lone Mountain/USF</td>
+        <td>3472.0</td>
+        <td>1151.0</td>
+        <td>NaN</td>
+        <td>37.764248</td>
+        <td>-122.449842</td>
+        <td>1905.0</td>
+        <td>37.7642483,-122.4498422</td>
+      </tr>
+      <tr>
+        <td>240</td>
+        <td>Condo/Co-op</td>
+        <td>1264 Dolores St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1749000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Noe Valley</td>
+        <td>1738.0</td>
+        <td>1006.0</td>
+        <td>375.0</td>
+        <td>37.749153</td>
+        <td>-122.425279</td>
+        <td>2012.0</td>
+        <td>37.749153299999996,-122.4252791</td>
+      </tr>
+      <tr>
+        <td>241</td>
+        <td>Single Family Residential</td>
+        <td>623 Athens St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>948000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Excelsior</td>
+        <td>1270.0</td>
+        <td>746.0</td>
+        <td>NaN</td>
+        <td>37.718055</td>
+        <td>-122.430876</td>
+        <td>1927.0</td>
+        <td>37.7180551,-122.43087609999999</td>
+      </tr>
+      <tr>
+        <td>242</td>
+        <td>Single Family Residential</td>
+        <td>892 Ashbury St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>4995000</td>
+        <td>5.0</td>
+        <td>4.00</td>
+        <td>Haight Ashbury</td>
+        <td>4290.0</td>
+        <td>1164.0</td>
+        <td>NaN</td>
+        <td>37.765785</td>
+        <td>-122.445817</td>
+        <td>1905.0</td>
+        <td>37.7657851,-122.44581699999999</td>
+      </tr>
+      <tr>
+        <td>243</td>
+        <td>Condo/Co-op</td>
+        <td>1870 Jackson St #301</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>1650000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Pacific Heights</td>
+        <td>1350.0</td>
+        <td>1222.0</td>
+        <td>800.0</td>
+        <td>37.793860</td>
+        <td>-122.425854</td>
+        <td>1931.0</td>
+        <td>37.793859499999996,-122.4258544</td>
+      </tr>
+      <tr>
+        <td>244</td>
+        <td>Single Family Residential</td>
+        <td>3616 Folsom St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1995000</td>
+        <td>4.0</td>
+        <td>4.00</td>
+        <td>Bernal Heights</td>
+        <td>2030.0</td>
+        <td>983.0</td>
+        <td>NaN</td>
+        <td>37.741207</td>
+        <td>-122.413389</td>
+        <td>1900.0</td>
+        <td>37.741206899999995,-122.4133888</td>
+      </tr>
+      <tr>
+        <td>245</td>
+        <td>Condo/Co-op</td>
+        <td>527 Oak St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94102</td>
+        <td>1650000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Hayes Valley</td>
+        <td>1820.0</td>
+        <td>907.0</td>
+        <td>270.0</td>
+        <td>37.774205</td>
+        <td>-122.428032</td>
+        <td>1900.0</td>
+        <td>37.774205,-122.428032</td>
+      </tr>
+      <tr>
+        <td>246</td>
+        <td>Condo/Co-op</td>
+        <td>282 Pixley St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>2288000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Pacific Heights</td>
+        <td>1733.0</td>
+        <td>1320.0</td>
+        <td>153.0</td>
+        <td>37.798440</td>
+        <td>-122.437047</td>
+        <td>NaN</td>
+        <td>37.7984397,-122.43704740000001</td>
+      </tr>
+      <tr>
+        <td>247</td>
+        <td>Condo/Co-op</td>
+        <td>330 Mission Bay Blvd #604</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94158</td>
+        <td>2888000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Mission Bay</td>
+        <td>1569.0</td>
+        <td>1841.0</td>
+        <td>969.0</td>
+        <td>37.771662</td>
+        <td>-122.387453</td>
+        <td>2008.0</td>
+        <td>37.771662,-122.3874533</td>
+      </tr>
+      <tr>
+        <td>248</td>
+        <td>Single Family Residential</td>
+        <td>718 Olmstead St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94134</td>
+        <td>1159000</td>
+        <td>4.0</td>
+        <td>2.00</td>
+        <td>Portola</td>
+        <td>1660.0</td>
+        <td>698.0</td>
+        <td>NaN</td>
+        <td>37.721074</td>
+        <td>-122.408964</td>
+        <td>1951.0</td>
+        <td>37.721074,-122.40896399999998</td>
+      </tr>
+      <tr>
+        <td>249</td>
+        <td>Condo/Co-op</td>
+        <td>125 Gilbert St #7</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>1295000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>South of Market</td>
+        <td>1550.0</td>
+        <td>835.0</td>
+        <td>792.0</td>
+        <td>37.773225</td>
+        <td>-122.401915</td>
+        <td>1996.0</td>
+        <td>37.773225200000006,-122.40191509999998</td>
+      </tr>
+      <tr>
+        <td>250</td>
+        <td>Single Family Residential</td>
+        <td>70 Manor Dr</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>2695000</td>
+        <td>4.0</td>
+        <td>4.00</td>
+        <td>Twin Peaks</td>
+        <td>2796.0</td>
+        <td>964.0</td>
+        <td>NaN</td>
+        <td>37.727643</td>
+        <td>-122.464261</td>
+        <td>1927.0</td>
+        <td>37.7276432,-122.4642608</td>
+      </tr>
+      <tr>
+        <td>251</td>
+        <td>Single Family Residential</td>
+        <td>135 15th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>4590000</td>
+        <td>5.0</td>
+        <td>3.50</td>
+        <td>Lakeshore</td>
+        <td>3939.0</td>
+        <td>1165.0</td>
+        <td>NaN</td>
+        <td>37.785534</td>
+        <td>-122.474609</td>
+        <td>1912.0</td>
+        <td>37.7855345,-122.4746091</td>
+      </tr>
+      <tr>
+        <td>252</td>
+        <td>Single Family Residential</td>
+        <td>1874 32nd Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>1448000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Sunset/Parkside</td>
+        <td>1642.0</td>
+        <td>882.0</td>
+        <td>NaN</td>
+        <td>37.752261</td>
+        <td>-122.490086</td>
+        <td>1941.0</td>
+        <td>37.7522606,-122.49008549999999</td>
+      </tr>
+      <tr>
+        <td>253</td>
+        <td>Single Family Residential</td>
+        <td>3015 Ulloa St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94116</td>
+        <td>1580000</td>
+        <td>4.0</td>
+        <td>2.00</td>
+        <td>Sunset/Parkside</td>
+        <td>1881.0</td>
+        <td>840.0</td>
+        <td>NaN</td>
+        <td>37.740393</td>
+        <td>-122.488798</td>
+        <td>1926.0</td>
+        <td>37.740392799999995,-122.4887983</td>
+      </tr>
+      <tr>
+        <td>254</td>
+        <td>Single Family Residential</td>
+        <td>4064 17th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>5150000</td>
+        <td>4.0</td>
+        <td>3.50</td>
+        <td>Twin Peaks</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.762613</td>
+        <td>-122.436665</td>
+        <td>1908.0</td>
+        <td>37.762613,-122.4366652</td>
+      </tr>
+      <tr>
+        <td>255</td>
+        <td>Condo/Co-op</td>
+        <td>435 China Basin St #547</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94158</td>
+        <td>1999999</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>Mission Bay</td>
+        <td>1685.0</td>
+        <td>1187.0</td>
+        <td>910.0</td>
+        <td>37.771594</td>
+        <td>-122.388589</td>
+        <td>2012.0</td>
+        <td>37.771593599999996,-122.38858929999999</td>
+      </tr>
+      <tr>
+        <td>256</td>
+        <td>Single Family Residential</td>
+        <td>325 Congdon St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>1095000</td>
+        <td>4.0</td>
+        <td>2.00</td>
+        <td>Excelsior</td>
+        <td>1237.0</td>
+        <td>885.0</td>
+        <td>NaN</td>
+        <td>37.728995</td>
+        <td>-122.425733</td>
+        <td>1910.0</td>
+        <td>37.7289951,-122.4257331</td>
+      </tr>
+      <tr>
+        <td>257</td>
+        <td>Condo/Co-op</td>
+        <td>2011 3rd St #6</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1095000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Mission Bay</td>
+        <td>1210.0</td>
+        <td>905.0</td>
+        <td>562.0</td>
+        <td>37.763948</td>
+        <td>-122.388482</td>
+        <td>1997.0</td>
+        <td>37.7639479,-122.38848229999999</td>
+      </tr>
+      <tr>
+        <td>258</td>
+        <td>Condo/Co-op</td>
+        <td>551 Clipper St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1249000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Noe Valley</td>
+        <td>1126.0</td>
+        <td>1109.0</td>
+        <td>225.0</td>
+        <td>37.748446</td>
+        <td>-122.437242</td>
+        <td>1921.0</td>
+        <td>37.748446,-122.437242</td>
+      </tr>
+      <tr>
+        <td>259</td>
+        <td>Condo/Co-op</td>
+        <td>370 De Haro St Unit B10</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>1695000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>Potrero Hill</td>
+        <td>1622.0</td>
+        <td>1045.0</td>
+        <td>NaN</td>
+        <td>37.765460</td>
+        <td>-122.402136</td>
+        <td>1999.0</td>
+        <td>37.7654597,-122.4021363</td>
+      </tr>
+      <tr>
+        <td>260</td>
+        <td>Single Family Residential</td>
+        <td>295 Hazelwood Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>1749000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>West of Twin Peaks</td>
+        <td>1439.0</td>
+        <td>1215.0</td>
+        <td>NaN</td>
+        <td>37.732736</td>
+        <td>-122.455460</td>
+        <td>NaN</td>
+        <td>37.73273579999999,-122.4554595</td>
+      </tr>
+      <tr>
+        <td>261</td>
+        <td>Condo/Co-op</td>
+        <td>160 Hancock St #3</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>2995000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Castro/Upper Market</td>
+        <td>2425.0</td>
+        <td>1235.0</td>
+        <td>400.0</td>
+        <td>37.760521</td>
+        <td>-122.431844</td>
+        <td>2003.0</td>
+        <td>37.76052120000001,-122.431844</td>
+      </tr>
+      <tr>
+        <td>262</td>
+        <td>Condo/Co-op</td>
+        <td>1100 Sacramento St #1002</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94108</td>
+        <td>12495000</td>
+        <td>3.0</td>
+        <td>3.75</td>
+        <td>Nob Hill</td>
+        <td>4320.0</td>
+        <td>2892.0</td>
+        <td>5387.0</td>
+        <td>37.792948</td>
+        <td>-122.411420</td>
+        <td>1925.0</td>
+        <td>37.79294779999999,-122.41141979999999</td>
+      </tr>
+      <tr>
+        <td>263</td>
+        <td>Condo/Co-op</td>
+        <td>1267 Oak St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>679000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Haight Ashbury</td>
+        <td>758.0</td>
+        <td>896.0</td>
+        <td>275.0</td>
+        <td>37.772502</td>
+        <td>-122.440134</td>
+        <td>1908.0</td>
+        <td>37.772502,-122.44013400000001</td>
+      </tr>
+      <tr>
+        <td>264</td>
+        <td>Single Family Residential</td>
+        <td>3741 Broderick St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>9300000</td>
+        <td>5.0</td>
+        <td>4.00</td>
+        <td>Marina</td>
+        <td>5016.0</td>
+        <td>1854.0</td>
+        <td>NaN</td>
+        <td>37.804979</td>
+        <td>-122.445795</td>
+        <td>1939.0</td>
+        <td>37.804978999999996,-122.44579479999999</td>
+      </tr>
+      <tr>
+        <td>265</td>
+        <td>Single Family Residential</td>
+        <td>195 Magellan Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94116</td>
+        <td>3000000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Twin Peaks</td>
+        <td>2976.0</td>
+        <td>1008.0</td>
+        <td>NaN</td>
+        <td>37.747588</td>
+        <td>-122.459705</td>
+        <td>1950.0</td>
+        <td>37.7475875,-122.4597055</td>
+      </tr>
+      <tr>
+        <td>266</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>3132-3136 23rd St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1200000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Mission</td>
+        <td>2191.0</td>
+        <td>548.0</td>
+        <td>NaN</td>
+        <td>37.754182</td>
+        <td>-122.415061</td>
+        <td>1900.0</td>
+        <td>37.7541819,-122.4150611</td>
+      </tr>
+      <tr>
+        <td>267</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>479-481 32nd Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94121</td>
+        <td>3250000</td>
+        <td>8.0</td>
+        <td>8.00</td>
+        <td>Outer Richmond</td>
+        <td>5320.0</td>
+        <td>611.0</td>
+        <td>NaN</td>
+        <td>37.780209</td>
+        <td>-122.492598</td>
+        <td>1923.0</td>
+        <td>37.7802087,-122.4925976</td>
+      </tr>
+      <tr>
+        <td>268</td>
+        <td>Townhouse</td>
+        <td>5031 Diamond Heights Blvd</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1499000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Twin Peaks</td>
+        <td>2188.0</td>
+        <td>685.0</td>
+        <td>675.0</td>
+        <td>37.747421</td>
+        <td>-122.442688</td>
+        <td>1979.0</td>
+        <td>37.747421,-122.44268799999999</td>
+      </tr>
+      <tr>
+        <td>269</td>
+        <td>Condo/Co-op</td>
+        <td>180 Corwin</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>995000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Castro/Upper Market</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>469.0</td>
+        <td>37.758150</td>
+        <td>-122.440717</td>
+        <td>NaN</td>
+        <td>37.7581502,-122.44071709999999</td>
+      </tr>
+      <tr>
+        <td>270</td>
+        <td>Condo/Co-op</td>
+        <td>236 Moultrie St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>798000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Bernal Heights</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.741120</td>
+        <td>-122.415918</td>
+        <td>1900.0</td>
+        <td>37.741120200000005,-122.4159179</td>
+      </tr>
+      <tr>
+        <td>271</td>
+        <td>Condo/Co-op</td>
+        <td>181 Ofarrell St #302</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94102</td>
+        <td>1295000</td>
+        <td>2.0</td>
+        <td>1.50</td>
+        <td>Financial District/South Beach</td>
+        <td>1499.0</td>
+        <td>864.0</td>
+        <td>805.0</td>
+        <td>37.786188</td>
+        <td>-122.407633</td>
+        <td>2006.0</td>
+        <td>37.78618839999999,-122.40763290000001</td>
+      </tr>
+      <tr>
+        <td>272</td>
+        <td>Condo/Co-op</td>
+        <td>195 7th St #309</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>425000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>307.0</td>
+        <td>1384.0</td>
+        <td>370.0</td>
+        <td>37.778275</td>
+        <td>-122.409432</td>
+        <td>1991.0</td>
+        <td>37.7782751,-122.40943190000002</td>
+      </tr>
+      <tr>
+        <td>273</td>
+        <td>Condo/Co-op</td>
+        <td>240 Lombard St #229</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94111</td>
+        <td>599000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Financial District/South Beach</td>
+        <td>580.0</td>
+        <td>1033.0</td>
+        <td>945.0</td>
+        <td>37.804244</td>
+        <td>-122.405504</td>
+        <td>1993.0</td>
+        <td>37.8042439,-122.4055041</td>
+      </tr>
+      <tr>
+        <td>274</td>
+        <td>Condo/Co-op</td>
+        <td>45 Bartlett St #416</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>698000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Mission</td>
+        <td>517.0</td>
+        <td>1350.0</td>
+        <td>540.0</td>
+        <td>37.755936</td>
+        <td>-122.419286</td>
+        <td>2014.0</td>
+        <td>37.7559364,-122.41928600000001</td>
+      </tr>
+      <tr>
+        <td>275</td>
+        <td>Condo/Co-op</td>
+        <td>2482 Bush St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94115</td>
+        <td>1650000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Pacific Heights</td>
+        <td>1522.0</td>
+        <td>1084.0</td>
+        <td>410.0</td>
+        <td>37.786716</td>
+        <td>-122.438095</td>
+        <td>1900.0</td>
+        <td>37.786716,-122.43809499999999</td>
+      </tr>
+      <tr>
+        <td>276</td>
+        <td>Single Family Residential</td>
+        <td>375 Naples St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112-2058</td>
+        <td>1398888</td>
+        <td>3.0</td>
+        <td>1.50</td>
+        <td>Excelsior</td>
+        <td>1700.0</td>
+        <td>823.0</td>
+        <td>NaN</td>
+        <td>37.722724</td>
+        <td>-122.429564</td>
+        <td>1917.0</td>
+        <td>37.7227237,-122.4295645</td>
+      </tr>
+      <tr>
+        <td>278</td>
+        <td>Condo/Co-op</td>
+        <td>1468 Francisco St #3</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>1199000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Marina</td>
+        <td>984.0</td>
+        <td>1218.0</td>
+        <td>350.0</td>
+        <td>37.802929</td>
+        <td>-122.429411</td>
+        <td>1924.0</td>
+        <td>37.8029289,-122.4294106</td>
+      </tr>
+      <tr>
+        <td>279</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>593-595 Clipper St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>3800000</td>
+        <td>4.0</td>
+        <td>3.50</td>
+        <td>Noe Valley</td>
+        <td>2309.0</td>
+        <td>1646.0</td>
+        <td>NaN</td>
+        <td>37.748455</td>
+        <td>-122.438063</td>
+        <td>1921.0</td>
+        <td>37.7484554,-122.4380625</td>
+      </tr>
+      <tr>
+        <td>280</td>
+        <td>Condo/Co-op</td>
+        <td>1000 North Point St #405</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>679000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Russian Hill</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>504.0</td>
+        <td>37.805510</td>
+        <td>-122.424157</td>
+        <td>1965.0</td>
+        <td>37.8055099,-122.42415729999999</td>
+      </tr>
+      <tr>
+        <td>281</td>
+        <td>Single Family Residential</td>
+        <td>46 Cook</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>2790000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Presidio Heights</td>
+        <td>3216.0</td>
+        <td>868.0</td>
+        <td>NaN</td>
+        <td>37.782883</td>
+        <td>-122.452035</td>
+        <td>1900.0</td>
+        <td>37.782883,-122.45203500000001</td>
+      </tr>
+      <tr>
+        <td>282</td>
+        <td>Condo/Co-op</td>
+        <td>2600 18th St #7</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1299000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Mission</td>
+        <td>1304.0</td>
+        <td>996.0</td>
+        <td>573.0</td>
+        <td>37.762136</td>
+        <td>-122.408479</td>
+        <td>1999.0</td>
+        <td>37.762136,-122.40847920000002</td>
+      </tr>
+      <tr>
+        <td>283</td>
+        <td>Condo/Co-op</td>
+        <td>322 Graystone Ter</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>998000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Twin Peaks</td>
+        <td>971.0</td>
+        <td>1028.0</td>
+        <td>105.0</td>
+        <td>37.756323</td>
+        <td>-122.443739</td>
+        <td>1958.0</td>
+        <td>37.756322999999995,-122.443739</td>
+      </tr>
+      <tr>
+        <td>284</td>
+        <td>Single Family Residential</td>
+        <td>1252 Church St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1195000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Noe Valley</td>
+        <td>1050.0</td>
+        <td>1138.0</td>
+        <td>NaN</td>
+        <td>37.750693</td>
+        <td>-122.427591</td>
+        <td>1900.0</td>
+        <td>37.7506935,-122.4275912</td>
+      </tr>
+      <tr>
+        <td>285</td>
+        <td>Condo/Co-op</td>
+        <td>1150 Sacramento St #504</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94108</td>
+        <td>2998000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>Nob Hill</td>
+        <td>2555.0</td>
+        <td>1173.0</td>
+        <td>2715.0</td>
+        <td>37.792984</td>
+        <td>-122.411797</td>
+        <td>1989.0</td>
+        <td>37.792983899999996,-122.41179740000001</td>
+      </tr>
+      <tr>
+        <td>286</td>
+        <td>Single Family Residential</td>
+        <td>25 Chaves Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>1498000</td>
+        <td>5.0</td>
+        <td>3.00</td>
+        <td>Glen Park</td>
+        <td>2255.0</td>
+        <td>664.0</td>
+        <td>NaN</td>
+        <td>37.742607</td>
+        <td>-122.453027</td>
+        <td>1931.0</td>
+        <td>37.7426071,-122.45302690000001</td>
+      </tr>
+      <tr>
+        <td>287</td>
+        <td>Single Family Residential</td>
+        <td>364 Valley St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>998000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Noe Valley</td>
+        <td>773.0</td>
+        <td>1291.0</td>
+        <td>NaN</td>
+        <td>37.744498</td>
+        <td>-122.430423</td>
+        <td>NaN</td>
+        <td>37.744498,-122.4304226</td>
+      </tr>
+      <tr>
+        <td>288</td>
+        <td>Condo/Co-op</td>
+        <td>4024 18th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>2495000</td>
+        <td>3.0</td>
+        <td>2.50</td>
+        <td>Castro/Upper Market</td>
+        <td>1930.0</td>
+        <td>1293.0</td>
+        <td>NaN</td>
+        <td>37.761209</td>
+        <td>-122.433428</td>
+        <td>1900.0</td>
+        <td>37.7612088,-122.4334281</td>
+      </tr>
+      <tr>
+        <td>289</td>
+        <td>Condo/Co-op</td>
+        <td>4026 18th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>1995000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Castro/Upper Market</td>
+        <td>1690.0</td>
+        <td>1180.0</td>
+        <td>NaN</td>
+        <td>37.761170</td>
+        <td>-122.433475</td>
+        <td>1900.0</td>
+        <td>37.76117,-122.4334751</td>
+      </tr>
+      <tr>
+        <td>290</td>
+        <td>Condo/Co-op</td>
+        <td>950 Tennessee St #211</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1399000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Mission Bay</td>
+        <td>1073.0</td>
+        <td>1304.0</td>
+        <td>598.0</td>
+        <td>37.759675</td>
+        <td>-122.389825</td>
+        <td>2020.0</td>
+        <td>37.759674700000005,-122.38982450000002</td>
+      </tr>
+      <tr>
+        <td>291</td>
+        <td>Condo/Co-op</td>
+        <td>950 Tennessee St #121</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1199000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Mission Bay</td>
+        <td>970.0</td>
+        <td>1236.0</td>
+        <td>598.0</td>
+        <td>37.759675</td>
+        <td>-122.389825</td>
+        <td>2020.0</td>
+        <td>37.759674700000005,-122.38982450000002</td>
+      </tr>
+      <tr>
+        <td>292</td>
+        <td>Condo/Co-op</td>
+        <td>950 Tennessee St #208</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>659000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Mission Bay</td>
+        <td>472.0</td>
+        <td>1396.0</td>
+        <td>435.0</td>
+        <td>37.759675</td>
+        <td>-122.389825</td>
+        <td>2020.0</td>
+        <td>37.759674700000005,-122.38982450000002</td>
+      </tr>
+      <tr>
+        <td>293</td>
+        <td>Condo/Co-op</td>
+        <td>950 Tennessee St #116</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>669000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Mission Bay</td>
+        <td>472.0</td>
+        <td>1417.0</td>
+        <td>435.0</td>
+        <td>37.759675</td>
+        <td>-122.389825</td>
+        <td>2020.0</td>
+        <td>37.759674700000005,-122.38982450000002</td>
+      </tr>
+      <tr>
+        <td>295</td>
+        <td>Single Family Residential</td>
+        <td>2851 25th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1895000</td>
+        <td>3.0</td>
+        <td>1.50</td>
+        <td>Mission</td>
+        <td>1860.0</td>
+        <td>1019.0</td>
+        <td>NaN</td>
+        <td>37.751165</td>
+        <td>-122.407282</td>
+        <td>1929.0</td>
+        <td>37.7511649,-122.4072825</td>
+      </tr>
+      <tr>
+        <td>296</td>
+        <td>Single Family Residential</td>
+        <td>817 Rockdale Dr</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>1395000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Glen Park</td>
+        <td>1125.0</td>
+        <td>1240.0</td>
+        <td>NaN</td>
+        <td>37.741121</td>
+        <td>-122.453381</td>
+        <td>1928.0</td>
+        <td>37.7411205,-122.4533807</td>
+      </tr>
+      <tr>
+        <td>297</td>
+        <td>Condo/Co-op</td>
+        <td>225 26th Ave #1</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94121</td>
+        <td>1959000</td>
+        <td>4.0</td>
+        <td>3.50</td>
+        <td>Lakeshore</td>
+        <td>2031.0</td>
+        <td>965.0</td>
+        <td>391.0</td>
+        <td>37.785127</td>
+        <td>-122.486508</td>
+        <td>2001.0</td>
+        <td>37.785127100000004,-122.4865075</td>
+      </tr>
+      <tr>
+        <td>298</td>
+        <td>Condo/Co-op</td>
+        <td>875 La Playa St #373</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94121</td>
+        <td>625000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Outer Richmond</td>
+        <td>767.0</td>
+        <td>815.0</td>
+        <td>758.0</td>
+        <td>37.771698</td>
+        <td>-122.510308</td>
+        <td>1983.0</td>
+        <td>37.771697499999995,-122.5103084</td>
+      </tr>
+      <tr>
+        <td>299</td>
+        <td>Condo/Co-op</td>
+        <td>712 Bryant St #4</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1740000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>South of Market</td>
+        <td>2180.0</td>
+        <td>798.0</td>
+        <td>833.0</td>
+        <td>37.777725</td>
+        <td>-122.400944</td>
+        <td>2001.0</td>
+        <td>37.777725399999994,-122.400944</td>
+      </tr>
+      <tr>
+        <td>300</td>
+        <td>Single Family Residential</td>
+        <td>150 Beaumont Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>2795000</td>
+        <td>5.0</td>
+        <td>3.00</td>
+        <td>Lone Mountain/USF</td>
+        <td>2904.0</td>
+        <td>962.0</td>
+        <td>NaN</td>
+        <td>37.778900</td>
+        <td>-122.454354</td>
+        <td>1948.0</td>
+        <td>37.7789,-122.45435379999999</td>
+      </tr>
+      <tr>
+        <td>301</td>
+        <td>Single Family Residential</td>
+        <td>1820 Kirkham St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>2195000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Sunset/Parkside</td>
+        <td>2274.0</td>
+        <td>965.0</td>
+        <td>NaN</td>
+        <td>37.759880</td>
+        <td>-122.480579</td>
+        <td>1932.0</td>
+        <td>37.759880200000005,-122.48057879999999</td>
+      </tr>
+      <tr>
+        <td>302</td>
+        <td>Condo/Co-op</td>
+        <td>425 1st St #4901</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1315000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>837.0</td>
+        <td>1571.0</td>
+        <td>NaN</td>
+        <td>37.786062</td>
+        <td>-122.392176</td>
+        <td>2008.0</td>
+        <td>37.7860625,-122.3921764</td>
+      </tr>
+      <tr>
+        <td>303</td>
+        <td>Condo/Co-op</td>
+        <td>1788 Clay St #405</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>925000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Nob Hill</td>
+        <td>780.0</td>
+        <td>1186.0</td>
+        <td>668.0</td>
+        <td>37.792570</td>
+        <td>-122.422250</td>
+        <td>2014.0</td>
+        <td>37.7925699,-122.42224979999999</td>
+      </tr>
+      <tr>
+        <td>304</td>
+        <td>Condo/Co-op</td>
+        <td>1177 California St #724</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94108</td>
+        <td>1755000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Nob Hill</td>
+        <td>1653.0</td>
+        <td>1062.0</td>
+        <td>1779.0</td>
+        <td>37.791026</td>
+        <td>-122.413648</td>
+        <td>1978.0</td>
+        <td>37.791026200000005,-122.4136476</td>
+      </tr>
+      <tr>
+        <td>305</td>
+        <td>Single Family Residential</td>
+        <td>595 Clipper St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94114</td>
+        <td>3800000</td>
+        <td>4.0</td>
+        <td>3.00</td>
+        <td>Noe Valley</td>
+        <td>2309.0</td>
+        <td>1646.0</td>
+        <td>NaN</td>
+        <td>37.748511</td>
+        <td>-122.438090</td>
+        <td>1921.0</td>
+        <td>37.7485106,-122.4380903</td>
+      </tr>
+      <tr>
+        <td>307</td>
+        <td>Single Family Residential</td>
+        <td>2341 Vallejo St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>6500000</td>
+        <td>4.0</td>
+        <td>4.00</td>
+        <td>Pacific Heights</td>
+        <td>3685.0</td>
+        <td>1764.0</td>
+        <td>NaN</td>
+        <td>37.794944</td>
+        <td>-122.435809</td>
+        <td>1922.0</td>
+        <td>37.7949444,-122.43580870000001</td>
+      </tr>
+      <tr>
+        <td>308</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>4231 4231A 26th St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>3045000</td>
+        <td>5.0</td>
+        <td>4.00</td>
+        <td>Noe Valley</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.747851</td>
+        <td>-122.434944</td>
+        <td>1907.0</td>
+        <td>37.7478511,-122.43494440000002</td>
+      </tr>
+      <tr>
+        <td>309</td>
+        <td>Condo/Co-op</td>
+        <td>755 Capp St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1695000</td>
+        <td>3.0</td>
+        <td>1.00</td>
+        <td>Mission</td>
+        <td>1890.0</td>
+        <td>897.0</td>
+        <td>200.0</td>
+        <td>37.754276</td>
+        <td>-122.417223</td>
+        <td>1900.0</td>
+        <td>37.754276000000004,-122.41722299999999</td>
+      </tr>
+      <tr>
+        <td>310</td>
+        <td>Condo/Co-op</td>
+        <td>170 King St #409</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>818000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>690.0</td>
+        <td>1186.0</td>
+        <td>698.0</td>
+        <td>37.778982</td>
+        <td>-122.391751</td>
+        <td>2007.0</td>
+        <td>37.7789817,-122.39175149999998</td>
+      </tr>
+      <tr>
+        <td>311</td>
+        <td>Condo/Co-op</td>
+        <td>601 4th St #312</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1250000</td>
+        <td>1.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1147.0</td>
+        <td>1090.0</td>
+        <td>689.0</td>
+        <td>37.778163</td>
+        <td>-122.395778</td>
+        <td>1916.0</td>
+        <td>37.7781631,-122.39577779999999</td>
+      </tr>
+      <tr>
+        <td>312</td>
+        <td>Condo/Co-op</td>
+        <td>35 Alpine Ter #5</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>2999000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>Haight Ashbury</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>715.0</td>
+        <td>37.769774</td>
+        <td>-122.437413</td>
+        <td>1958.0</td>
+        <td>37.769774,-122.43741299999999</td>
+      </tr>
+      <tr>
+        <td>313</td>
+        <td>Single Family Residential</td>
+        <td>1485 11th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94122</td>
+        <td>1288000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Inner Sunset</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.760501</td>
+        <td>-122.468418</td>
+        <td>1922.0</td>
+        <td>37.760500799999996,-122.4684179</td>
+      </tr>
+      <tr>
+        <td>314</td>
+        <td>Condo/Co-op</td>
+        <td>4231 26th St #4231</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1495000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Noe Valley</td>
+        <td>1553.0</td>
+        <td>963.0</td>
+        <td>NaN</td>
+        <td>37.747929</td>
+        <td>-122.434961</td>
+        <td>1907.0</td>
+        <td>37.747929,-122.4349606</td>
+      </tr>
+      <tr>
+        <td>315</td>
+        <td>Condo/Co-op</td>
+        <td>4231 4231A 26th St Unit 4231A</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>1550000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Noe Valley</td>
+        <td>1401.0</td>
+        <td>1106.0</td>
+        <td>NaN</td>
+        <td>37.747851</td>
+        <td>-122.434944</td>
+        <td>1907.0</td>
+        <td>37.7478511,-122.43494440000002</td>
+      </tr>
+      <tr>
+        <td>316</td>
+        <td>Condo/Co-op</td>
+        <td>1945 Hyde St #7</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94109</td>
+        <td>4700000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Russian Hill</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>1406.0</td>
+        <td>37.798823</td>
+        <td>-122.419263</td>
+        <td>1920.0</td>
+        <td>37.798823299999995,-122.4192632</td>
+      </tr>
+      <tr>
+        <td>317</td>
+        <td>Single Family Residential</td>
+        <td>502 Plymouth Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94112</td>
+        <td>795000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Oceanview/Merced/Ingleside</td>
+        <td>950.0</td>
+        <td>837.0</td>
+        <td>NaN</td>
+        <td>37.715106</td>
+        <td>-122.455780</td>
+        <td>1907.0</td>
+        <td>37.7151059,-122.45578020000002</td>
+      </tr>
+      <tr>
+        <td>318</td>
+        <td>Multi-Family (5+ Unit)</td>
+        <td>1649 Market St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>28500000</td>
+        <td>4.0</td>
+        <td>NaN</td>
+        <td>South of Market</td>
+        <td>41544.0</td>
+        <td>686.0</td>
+        <td>NaN</td>
+        <td>37.773387</td>
+        <td>-122.421237</td>
+        <td>1912.0</td>
+        <td>37.7733868,-122.4212372</td>
+      </tr>
+      <tr>
+        <td>319</td>
+        <td>Condo/Co-op</td>
+        <td>318 Spear St Unit 3A</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1499000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1274.0</td>
+        <td>1177.0</td>
+        <td>982.0</td>
+        <td>37.789746</td>
+        <td>-122.390856</td>
+        <td>2008.0</td>
+        <td>37.789745700000005,-122.3908558</td>
+      </tr>
+      <tr>
+        <td>320</td>
+        <td>Condo/Co-op</td>
+        <td>1160 Mission St #2309</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>899000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>805.0</td>
+        <td>37.778704</td>
+        <td>-122.412634</td>
+        <td>2008.0</td>
+        <td>37.7787037,-122.4126341</td>
+      </tr>
+      <tr>
+        <td>321</td>
+        <td>Condo/Co-op</td>
+        <td>207 King St #710</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1499000</td>
+        <td>2.0</td>
+        <td>1.50</td>
+        <td>Mission Bay</td>
+        <td>1302.0</td>
+        <td>1151.0</td>
+        <td>656.0</td>
+        <td>37.777528</td>
+        <td>-122.391685</td>
+        <td>2003.0</td>
+        <td>37.777527500000005,-122.3916855</td>
+      </tr>
+      <tr>
+        <td>322</td>
+        <td>Condo/Co-op</td>
+        <td>250 King St #1504</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>725000</td>
+        <td>0.0</td>
+        <td>1.00</td>
+        <td>Mission Bay</td>
+        <td>595.0</td>
+        <td>1218.0</td>
+        <td>799.0</td>
+        <td>37.778122</td>
+        <td>-122.393290</td>
+        <td>2004.0</td>
+        <td>37.7781222,-122.39329029999999</td>
+      </tr>
+      <tr>
+        <td>323</td>
+        <td>Condo/Co-op</td>
+        <td>540 De Haro St #204</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1795000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>Potrero Hill</td>
+        <td>1495.0</td>
+        <td>1201.0</td>
+        <td>558.0</td>
+        <td>37.763009</td>
+        <td>-122.401686</td>
+        <td>2020.0</td>
+        <td>37.763009000000004,-122.4016864</td>
+      </tr>
+      <tr>
+        <td>324</td>
+        <td>Single Family Residential</td>
+        <td>256 Fowler Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94127</td>
+        <td>1998000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Glen Park</td>
+        <td>1892.0</td>
+        <td>1056.0</td>
+        <td>NaN</td>
+        <td>37.743319</td>
+        <td>-122.452062</td>
+        <td>1932.0</td>
+        <td>37.7433188,-122.4520624</td>
+      </tr>
+      <tr>
+        <td>325</td>
+        <td>Single Family Residential</td>
+        <td>2590 Green St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94123</td>
+        <td>28800000</td>
+        <td>5.0</td>
+        <td>8.00</td>
+        <td>Pacific Heights</td>
+        <td>8630.0</td>
+        <td>3337.0</td>
+        <td>NaN</td>
+        <td>37.795586</td>
+        <td>-122.441718</td>
+        <td>1920.0</td>
+        <td>37.795586,-122.441718</td>
+      </tr>
+      <tr>
+        <td>326</td>
+        <td>Condo/Co-op</td>
+        <td>1488 Harrison St #204</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>1025000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1102.0</td>
+        <td>930.0</td>
+        <td>614.0</td>
+        <td>37.770933</td>
+        <td>-122.412420</td>
+        <td>2001.0</td>
+        <td>37.7709329,-122.41242050000001</td>
+      </tr>
+      <tr>
+        <td>327</td>
+        <td>Single Family Residential</td>
+        <td>29 Park Hill Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>4700000</td>
+        <td>4.0</td>
+        <td>4.00</td>
+        <td>Haight Ashbury</td>
+        <td>2810.0</td>
+        <td>1673.0</td>
+        <td>NaN</td>
+        <td>37.767658</td>
+        <td>-122.439068</td>
+        <td>1927.0</td>
+        <td>37.7676583,-122.43906820000001</td>
+      </tr>
+      <tr>
+        <td>328</td>
+        <td>Single Family Residential</td>
+        <td>338 Duncan St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>4895000</td>
+        <td>5.0</td>
+        <td>5.00</td>
+        <td>Noe Valley</td>
+        <td>3578.0</td>
+        <td>1368.0</td>
+        <td>NaN</td>
+        <td>37.746226</td>
+        <td>-122.428609</td>
+        <td>1900.0</td>
+        <td>37.7462262,-122.42860879999999</td>
+      </tr>
+      <tr>
+        <td>329</td>
+        <td>Multi-Family (2-4 Unit)</td>
+        <td>66-68 Cook St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>2100000</td>
+        <td>3.0</td>
+        <td>3.00</td>
+        <td>Presidio Heights</td>
+        <td>1905.0</td>
+        <td>1102.0</td>
+        <td>NaN</td>
+        <td>37.782609</td>
+        <td>-122.451979</td>
+        <td>1900.0</td>
+        <td>37.7826086,-122.4519794</td>
+      </tr>
+      <tr>
+        <td>330</td>
+        <td>Townhouse</td>
+        <td>419 Fulton St #204</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94102</td>
+        <td>1795000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Hayes Valley</td>
+        <td>1443.0</td>
+        <td>1244.0</td>
+        <td>694.0</td>
+        <td>37.778472</td>
+        <td>-122.423813</td>
+        <td>2000.0</td>
+        <td>37.7784716,-122.4238129</td>
+      </tr>
+      <tr>
+        <td>331</td>
+        <td>Condo/Co-op</td>
+        <td>238 Moultrie St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94110</td>
+        <td>1100000</td>
+        <td>2.0</td>
+        <td>1.00</td>
+        <td>Bernal Heights</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>37.741127</td>
+        <td>-122.415922</td>
+        <td>1900.0</td>
+        <td>37.7411267,-122.4159219</td>
+      </tr>
+      <tr>
+        <td>332</td>
+        <td>Condo/Co-op</td>
+        <td>175 Russ St #5</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>849000</td>
+        <td>1.0</td>
+        <td>1.50</td>
+        <td>South of Market</td>
+        <td>837.0</td>
+        <td>1014.0</td>
+        <td>584.0</td>
+        <td>37.778158</td>
+        <td>-122.406991</td>
+        <td>2003.0</td>
+        <td>37.7781581,-122.4069909</td>
+      </tr>
+      <tr>
+        <td>333</td>
+        <td>Condo/Co-op</td>
+        <td>1075 Market St #408</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>724000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>554.0</td>
+        <td>1307.0</td>
+        <td>665.0</td>
+        <td>37.780800</td>
+        <td>-122.411834</td>
+        <td>2018.0</td>
+        <td>37.7807996,-122.4118342</td>
+      </tr>
+      <tr>
+        <td>334</td>
+        <td>Condo/Co-op</td>
+        <td>425 1st St #1506</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1525000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1238.0</td>
+        <td>1232.0</td>
+        <td>1096.0</td>
+        <td>37.786062</td>
+        <td>-122.392176</td>
+        <td>2008.0</td>
+        <td>37.7860625,-122.3921764</td>
+      </tr>
+      <tr>
+        <td>335</td>
+        <td>Condo/Co-op</td>
+        <td>338 Spear St Unit 20B</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>2695000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>998.0</td>
+        <td>37.789414</td>
+        <td>-122.390643</td>
+        <td>NaN</td>
+        <td>37.789413700000004,-122.3906433</td>
+      </tr>
+      <tr>
+        <td>336</td>
+        <td>Condo/Co-op</td>
+        <td>65 Hermann St #1</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94102</td>
+        <td>850000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Hayes Valley</td>
+        <td>877.0</td>
+        <td>969.0</td>
+        <td>400.0</td>
+        <td>37.770488</td>
+        <td>-122.426155</td>
+        <td>1959.0</td>
+        <td>37.7704882,-122.42615500000001</td>
+      </tr>
+      <tr>
+        <td>337</td>
+        <td>Multi-Family (5+ Unit)</td>
+        <td>781 Corbett Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>2300000</td>
+        <td>4.0</td>
+        <td>NaN</td>
+        <td>Twin Peaks</td>
+        <td>3344.0</td>
+        <td>688.0</td>
+        <td>NaN</td>
+        <td>37.754211</td>
+        <td>-122.442510</td>
+        <td>1955.0</td>
+        <td>37.7542112,-122.4425105</td>
+      </tr>
+      <tr>
+        <td>338</td>
+        <td>Condo/Co-op</td>
+        <td>318 Spear St Unit 8G</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>1099000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>South of Market</td>
+        <td>798.0</td>
+        <td>1377.0</td>
+        <td>891.0</td>
+        <td>37.789746</td>
+        <td>-122.390856</td>
+        <td>2008.0</td>
+        <td>37.789745700000005,-122.3908558</td>
+      </tr>
+      <tr>
+        <td>339</td>
+        <td>Condo/Co-op</td>
+        <td>188 Minna St Unit 35D</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94105</td>
+        <td>3800000</td>
+        <td>2.0</td>
+        <td>2.50</td>
+        <td>South of Market</td>
+        <td>1792.0</td>
+        <td>2121.0</td>
+        <td>2743.0</td>
+        <td>37.786146</td>
+        <td>-122.401301</td>
+        <td>2005.0</td>
+        <td>37.786146200000005,-122.4013007</td>
+      </tr>
+      <tr>
+        <td>340</td>
+        <td>Townhouse</td>
+        <td>145 Gardenside Dr #22</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94131</td>
+        <td>995000</td>
+        <td>2.0</td>
+        <td>1.50</td>
+        <td>Twin Peaks</td>
+        <td>1274.0</td>
+        <td>781.0</td>
+        <td>751.0</td>
+        <td>37.754334</td>
+        <td>-122.444984</td>
+        <td>1981.0</td>
+        <td>37.7543339,-122.4449841</td>
+      </tr>
+      <tr>
+        <td>341</td>
+        <td>Condo/Co-op</td>
+        <td>1300 22nd St #110</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1095000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Potrero Hill</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>673.0</td>
+        <td>37.757838</td>
+        <td>-122.394471</td>
+        <td>2016.0</td>
+        <td>37.7578379,-122.39447140000001</td>
+      </tr>
+      <tr>
+        <td>342</td>
+        <td>Single Family Residential</td>
+        <td>474 Arkansas St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>1185000</td>
+        <td>3.0</td>
+        <td>1.00</td>
+        <td>Potrero Hill</td>
+        <td>1105.0</td>
+        <td>1072.0</td>
+        <td>NaN</td>
+        <td>37.760203</td>
+        <td>-122.398418</td>
+        <td>1914.0</td>
+        <td>37.760202500000005,-122.39841809999999</td>
+      </tr>
+      <tr>
+        <td>343</td>
+        <td>Condo/Co-op</td>
+        <td>73 Wood St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94118</td>
+        <td>625000</td>
+        <td>1.0</td>
+        <td>1.00</td>
+        <td>Presidio Heights</td>
+        <td>1080.0</td>
+        <td>579.0</td>
+        <td>NaN</td>
+        <td>37.782741</td>
+        <td>-122.449480</td>
+        <td>NaN</td>
+        <td>37.782740999999994,-122.44948000000001</td>
+      </tr>
+      <tr>
+        <td>344</td>
+        <td>Single Family Residential</td>
+        <td>830 Rhode Island St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94107</td>
+        <td>2150000</td>
+        <td>0.0</td>
+        <td>NaN</td>
+        <td>Potrero Hill</td>
+        <td>4150.0</td>
+        <td>518.0</td>
+        <td>NaN</td>
+        <td>37.759217</td>
+        <td>-122.402315</td>
+        <td>1900.0</td>
+        <td>37.7592172,-122.4023154</td>
+      </tr>
+      <tr>
+        <td>345</td>
+        <td>Multi-Family (5+ Unit)</td>
+        <td>734-740 Green St</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94133</td>
+        <td>7750000</td>
+        <td>21.0</td>
+        <td>NaN</td>
+        <td>North Beach</td>
+        <td>10670.0</td>
+        <td>726.0</td>
+        <td>NaN</td>
+        <td>37.799504</td>
+        <td>-122.411344</td>
+        <td>1907.0</td>
+        <td>37.799504,-122.41134369999999</td>
+      </tr>
+      <tr>
+        <td>346</td>
+        <td>Condo/Co-op</td>
+        <td>155 Harriet St #8</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>999000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>NaN</td>
+        <td>NaN</td>
+        <td>652.0</td>
+        <td>37.777616</td>
+        <td>-122.404989</td>
+        <td>2001.0</td>
+        <td>37.7776155,-122.4049895</td>
+      </tr>
+      <tr>
+        <td>347</td>
+        <td>Condo/Co-op</td>
+        <td>769 19th Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94121</td>
+        <td>1425000</td>
+        <td>2.0</td>
+        <td>1.50</td>
+        <td>Outer Richmond</td>
+        <td>1400.0</td>
+        <td>1018.0</td>
+        <td>250.0</td>
+        <td>37.773474</td>
+        <td>-122.478137</td>
+        <td>1922.0</td>
+        <td>37.7734744,-122.47813670000001</td>
+      </tr>
+      <tr>
+        <td>348</td>
+        <td>Condo/Co-op</td>
+        <td>355 Buena Vista Ave Unit 512W</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94117</td>
+        <td>1425000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>Haight Ashbury</td>
+        <td>1030.0</td>
+        <td>1383.0</td>
+        <td>858.0</td>
+        <td>37.767181</td>
+        <td>-122.440133</td>
+        <td>1986.0</td>
+        <td>37.7671808,-122.44013290000001</td>
+      </tr>
+      <tr>
+        <td>349</td>
+        <td>Single Family Residential</td>
+        <td>2587 41st Ave</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94116</td>
+        <td>1095000</td>
+        <td>3.0</td>
+        <td>2.00</td>
+        <td>Sunset/Parkside</td>
+        <td>1655.0</td>
+        <td>662.0</td>
+        <td>NaN</td>
+        <td>37.738546</td>
+        <td>-122.499229</td>
+        <td>1952.0</td>
+        <td>37.738546,-122.49922859999998</td>
+      </tr>
+      <tr>
+        <td>350</td>
+        <td>Condo/Co-op</td>
+        <td>1160 Mission St #1907</td>
+        <td>San Francisco</td>
+        <td>CA</td>
+        <td>94103</td>
+        <td>1200000</td>
+        <td>2.0</td>
+        <td>2.00</td>
+        <td>South of Market</td>
+        <td>1043.0</td>
+        <td>1151.0</td>
+        <td>915.0</td>
+        <td>37.778704</td>
+        <td>-122.412634</td>
+        <td>2008.0</td>
+        <td>37.7787037,-122.4126341</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+</div>
+  
+
+  
+  <!-- FOOTER -->
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm">
+          <p>Put together with the brains of Cynthia, Humberto, Jennifer, and Stephanie in July of 2020. With the help of the UC Berkeley Extension Program.</p>
+        </div>
+      </div>
+      
+    </div>
+  </footer>
+  <!-- Scripts -->
+  
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+  <script type="text/javascript" src="config.js"></script>
+  <script type="text/javascript" src="logic2.js"></script>
+  
+  <script type="text/javascript" src="graphs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+  
+  
+</body>
+</html>

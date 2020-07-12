@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../plotly/StarterCode"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "JenniferWorkingFiles"
+	}
+}
