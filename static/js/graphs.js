@@ -2,6 +2,7 @@ console.log("graphs.js is locked and loaded")
 /////////EVICTION VISUALIZATIONS
 var queryUrl = "https://data.sfgov.org/resource/5cei-gny5.geojson";
 
+
 // Perform a GET request to the query URL
 d3.json(queryUrl, function(legendData) {
   //dictionary to hold all wanted data 

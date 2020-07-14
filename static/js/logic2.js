@@ -2,6 +2,7 @@ console.log("logic2.js is locked and loaded");
 //  Fetch data
 var evictionUrl = "https://data.sfgov.org/resource/5cei-gny5.geojson";
 var neighborhoodsData = "Resources/SF Find Neighborhoods.geojson";
+//https://data.sfgov.org/resource/xfcw-9evu.json
 
 function createEvictions(SFevictionData) {
   // console.log(SFevictionData);
@@ -16,17 +17,17 @@ function createEvictions(SFevictionData) {
         // console.log("True prop: " + prop)
         if (feature.properties[prop] === true) {
           // console.log("Double True: " + feature.properties[prop])
-          var popupEviction = prop
+          var popupEviction = prop.replace(/_/g, ' ')
         } //for const
       } //if is eviction
     } //if feature_true
     // console.log(popupEviction)
     
 
-    layer.bindPopup("<h3> Eviction ID: " + feature.properties.eviction_id +
-      "</h3><hr><p> Neighborhood: " + feature.properties.neighborhood + 
-      "<p> Eviction Reason: " + popupEviction + "</p>"  + 
-      "<p>Date of Notice: " + new Date(feature.properties.file_date).toDateString() + "</p>");
+    layer.bindPopup("<b>Eviction ID:</b> " + feature.properties.eviction_id +
+      "<br><b>Neighborhood:</b> " + feature.properties.neighborhood + 
+      "<br><b>Eviction Reason:</b> " + popupEviction  + 
+      "<br><b>Date of Notice: </b>" + new Date(feature.properties.file_date).toDateString());
   
   }
   // Create a GeoJSON layer containing the features array on the SF evictions object
@@ -68,14 +69,21 @@ function createNeighborhoods(neighborhoodFeatures) {
               });
             },
             // Enlarge section when clicked
-            click: function(event) {
-              myMap.fitBounds(event.target.getBounds());
-            }
+            // click: function(event) {
+            //   // console.log(event.target.feature.geometry.coordinates)
+            //   bounds = event.target.getBounds();
+            //   myMap.fitBounds(bounds)
+            // }
           });
         }
       });
     return neighborhoods;
-}
+
+  
+};
+
+
+
 
 function createMap(evictions, neighborhoods) {
 
@@ -85,6 +93,7 @@ function createMap(evictions, neighborhoods) {
     tileSize: 512,
     maxZoom: 18,
     zoomOffset: -1,
+    scrollWheelZoom: false,
     id: "mapbox/streets-v11",
     accessToken: API_KEY
   });
@@ -124,7 +133,6 @@ function createMap(evictions, neighborhoods) {
     collapsed: false
   }).addTo(myMap);
   createLegend(myMap);
-  console.log("have we gotten this far?")
 };
 //////////
 
@@ -154,26 +162,20 @@ function createLegend(myMap) {
   var info = L.control({
     position: "bottomleft"
   });
-  console.log("inside function")
 
     //create map placement in hmtl
   info.onAdd = function() {
     var div = L.DomUtil.create("div", "legend");
     return div;
   };
-  console.log("inside function two")
 
   // Add the info legend to the map
   info.addTo(myMap);
- console.log("inside function three")
   
 }
 var magicUrl = "https://data.sfgov.org/resource/5cei-gny5.geojson";
-console.log("inside four")
-console.log(magicUrl)
   //where the count begins
 d3.json(magicUrl, function(legendData) {
-    console.log("Is this working:")
     console.log(legendData);
 
     var propertyData = legendData.features
@@ -309,25 +311,25 @@ d3.json(magicUrl, function(legendData) {
   // Update the legend's innerHTML with the last updated time and station count
   function updateLegend(evictionCount) {
     document.querySelector(".legend").innerHTML = [
-  "<h3><u>Eviction Rational City Totals</u></h3>",  
-  "<p>Breach: " + evictionCount.breach +"</p>",
-  "<p>Capital Improvement: " + evictionCount.capital_improvement +"</p>",
-  "<p>Condo Conversion: " + evictionCount.condo_conversion +"</p>",
-  "<p>Demolition: " + evictionCount.demolition +"</p>",
-  "<p>Development: " + evictionCount.development +"</p>",
-  "<p>Ellis Act Withdrawal: " + evictionCount.ellis_act_withdrawal +"</p>",
-  "<p>Failure To Sign Renewal: " + evictionCount.failure_to_sign_renewal +"</p>",
-  "<p>Good Samaritan Ends: " + evictionCount.good_samaritan_ends +"</p>",
-  "<p>Illegal Use: " + evictionCount.illegal_use +"</p>",
-  "<p>Late Payments: " + evictionCount.late_payments +"</p>",
-  "<p>Lead Remediation: " + evictionCount.lead_remediation +"</p>",
-  "<p>Non Payment: " + evictionCount.non_payment +"</p>",
-  "<p>Nuisance: " + evictionCount.nuisance +"</p>",
-  "<p>Other Cause: " + evictionCount.other_cause +"</p>",
-  "<p>Owner Move In: " + evictionCount.owner_move_in +"</p>",
-  "<p>Roommate Same Unit: " + evictionCount.roommate_same_unit +"</p>",
-  "<p>Substantial Rehab: " + evictionCount.substantial_rehab +"</p>",
-  "<p>Unapproved Subtenant: " + evictionCount.unapproved_subtenant +"</p>"
+  "<h5><u>Eviction Rational<br>City Totals:</u></h5>",  
+  "Breach: " + evictionCount.breach +"<br>",
+  "Capital Improvement: " + evictionCount.capital_improvement +"<br>",
+  "Condo Conversion: " + evictionCount.condo_conversion +"<br>",
+  "Demolition: " + evictionCount.demolition +"<br>",
+  "Development: " + evictionCount.development +"<br>",
+  "Ellis Act Withdrawal: " + evictionCount.ellis_act_withdrawal +"<br>",
+  "Failure To Sign Renewal: " + evictionCount.failure_to_sign_renewal +"<br>",
+  "Good Samaritan Ends: " + evictionCount.good_samaritan_ends +"<br>",
+  "Illegal Use: " + evictionCount.illegal_use +"<br>",
+  "Late Payments: " + evictionCount.late_payments +"<br>",
+  "Lead Remediation: " + evictionCount.lead_remediation +"<br>",
+  "Non Payment: " + evictionCount.non_payment +"<br>",
+  "Nuisance: " + evictionCount.nuisance +"<br>",
+  "Other Cause: " + evictionCount.other_cause +"<br>",
+  "Owner Move In: " + evictionCount.owner_move_in +"<br>",
+  "Roommate Same Unit: " + evictionCount.roommate_same_unit +"<br>",
+  "Substantial Rehab: " + evictionCount.substantial_rehab +"<br>",
+  "Unapproved Subtenant: " + evictionCount.unapproved_subtenant +"<br>"
       
     ].join("");
   };

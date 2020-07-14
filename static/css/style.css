@@ -1,16 +1,28 @@
-
-
 #map,
 body,
 html {
   height: 100%;
 }
 
+#intro-image {
+  background-color: lightsteelblue;
+  padding-top: 24pt;
+}
 
+#about_info {
+  background-color: lightsteelblue;
+}
+
+h2 {
+  text-align: center;
+}
 .nav {
-  padding: 15px;
-  background-color: lightblue;
+  background-color: green;
  
+}
+
+body {
+  padding-top: 50px;
 }
 
 #pie {
@@ -20,9 +32,9 @@ html {
 .legend {
   padding: 1.5px;
   font-family: serif;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 14px;
+  font-size: 14px;
+  /* font-weight: bold; */
+  line-height: 18px;
   color: #555;
   background-color: white;
   border-radius: 5px;
