@@ -21,6 +21,9 @@
 ## Authors
 
 * **Jennifer Ramsey** - [jennylynnramz](https://github.com/jennylynnramz)
+* **Cynthia Kellogg** - [cynthiakellogg](https://github.com/cynthiakellogg)
+* **Humberto Leon** - [umbertoleone](https://github.com/umbertoleone)
+* **Stephanie Tang** - [stang912](https://github.com/stang912)
 
 
 ## License
