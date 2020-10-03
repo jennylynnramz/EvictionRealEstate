@@ -1,8 +1,7 @@
 # EvictionRealEstate
 
-## Demo - [Click here]((http://jennylynnramz.com/EvictionRealEstate/)
+## Demo - [Click here](http://jennylynnramz.com/EvictionRealEstate/)
 
-![Preview](https://raw.githubusercontent.com/jennylynnramz/jennylynnramz.github.io/master/Photos/Health-Risk-dashboard.png)
 
 ## Description
 * This page visualizes evictions in San Francisco.
